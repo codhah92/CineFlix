@@ -61,7 +61,7 @@ id	            | integer   |	not null, primary key
 series_id       | integer   | not null, indexed
 user_id         | integer   | not null, indexed
 rating          | integer   | not null, default: 0, indexed
-body            | text      | not null
+body            | text      | not null (consider adding later if want reviews)
 
 ## castings (bonus)
 column          | data type |	 details
