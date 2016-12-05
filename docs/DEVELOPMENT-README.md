@@ -8,60 +8,48 @@
 
 CineFlix is a Netflix clone built using Ruby on Rails & React/Redux. The primary features of this website include:
 
-- Hosting on Heroku
-- New account creation, login, and guest/demo login
-- Production README
-- Smooth, bug-free navigation, adequate seed data and sufficient CSS styling
+- [ ] Hosting on Heroku
+- [ ] New account creation, login, and guest/demo login
+- [ ] Production README
+- [ ] Smooth, bug-free navigation, adequate seed data and sufficient CSS styling
 
-- Videos
+- [ ] Videos
   - Access various series to pick & play video clips
 
-- Ratings
+- [ ] Ratings
   - Rate a series
 
-- My List
+- [ ] My List
   - Create a list to keep track of series user is interested in
 
-- Wrap-around Scroll
+- [ ] Wrap-around Scroll
   - Series are organized by genre with a 'wrap-around' scroll
 
-- Search
+- [ ] Search
   - Search for a series by genre or title (cast as a bonus)
 
 - Bonus:
-  - Continue Watching
+  - [ ] Continue Watching
     - Keep track of which episode a user was on for a given series/show
-
-  - Featured Series
+  - [ ] Featured Series
     - Browser Home will have a 'feature' series to watch based on most recent addition
-
-  - Infinite Scroll
+  - [ ] Infinite Scroll
     - More genres will load when scrolling to bottom of Browser Home
-
-  - Auto-play
+  - [ ] Auto-play
     - Clips will auto-play following clips in series
-
-  - Suggested Series
+  - [ ] Suggested Series
     - Series will be suggested based on user's watch history
-
-  - Notifications Bell
+  - [ ] Notifications Bell
     - Notifications for new additions added to database
-
-  - OAuth
+  - [ ] OAuth
     - OAuth login using Facebook
 
 ## Design Docs
-* [View Wireframes][wireframes]
-* [React Components][components]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][sample-state]
-
-[wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+* [View Wireframes](wireframes)
+* [React Components](component-hierarchy.md)
+* [API endpoints](api-endpoints.md)
+* [DB schema](schema.md)
+* [Sample State](sample-state.md)
 
 ## Implementation Timeline
 
