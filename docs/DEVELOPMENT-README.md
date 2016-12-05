@@ -58,7 +58,7 @@ CineFlix is a Netflix clone built using Ruby on Rails & React/Redux. The primary
 * [Sample State][sample-state]
 
 [wireframes]: docs/wireframes
-[components]: docs/component-heirarchy.md
+[components]: docs/component-hierarchy.md
 [sample-state]: docs/sample-state.md
 [api-endpoints]: docs/api-endpoints.md
 [schema]: docs/schema.md
