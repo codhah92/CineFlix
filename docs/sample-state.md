@@ -8,8 +8,8 @@
     favorites: [favorite_id1, favorite_id2]
   },
   forms: {
-    signUp: {errors: []},
-    logIn: {errors: []},
+    signUp: {errors: { base: [] }},
+    logIn: {errors: { base: [] }},
   },
   series: {
     1: {

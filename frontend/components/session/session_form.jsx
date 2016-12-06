@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.guestSignIn = this.guestSignIn.bind(this);
     this.update = this.update.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   componentDidMount() {
@@ -34,23 +35,58 @@ class SessionForm extends React.Component {
   }
 
   guestSignIn() {
-    this.setState({ email: 'guest@guest.com', password: 'guestpass' });
     this.props.processForm({ email: 'guest@guest.com', password: 'guestpass'}).
     then(() => this.redirect());
   }
 
   renderErrors() {
-    if (typeof this.props.errors[0] !== 'undefined'){
-      if (this.props.formType === 'signin') {
-        return (
-          <ul className="errors">
-            <li className='error-email'>Please enter a valid email.</li>
-            <li className='error-password'>Your password must contain at least 6.</li>
-          </ul>
-        );
-      }
-    }
-  }
+		return(
+			<ul>
+				{this.props.errors.map((error, i) => (
+					<li key={`error-${i}`}>
+						{error}
+					</li>
+				))}
+			</ul>
+		);
+	}
+    // if (typeof this.props.errors[0] !== 'undefined'){
+    //   if (this.props.formType === 'signin')  {
+    //     if (this.state.email === "") {
+    //       return (
+    //         <li className='empty-email'>
+    //           Please enter a valid email.
+    //         </li>
+    //       );
+    //     } else if (this.state.password === ""){
+    //       return (
+    //         <li className='empty-password'>
+    //           Your password must contain at least 6 characters.
+    //         </li>
+    //       );
+    //     }
+
+
+        // return (
+        //   <ul className="signin-errors" >
+        //     <li className='nonexistent-email'>
+        //       Sorry, we can't find an account with this email address.
+        //       Please try again or create a new account.
+        //     </li>
+        //     <li className='incorrect-password'>
+        //       Incorrect password. Please try again or you can reset your password.
+        //     </li>
+        //     <li className='empty-email'>
+        //       Please enter a valid email.
+        //     </li>
+        //     <li className='empty-password'>
+        //       Your password must contain at least 6 characters.
+        //     </li>
+        //   </ul>
+        // );
+  //     }
+  //   }
+  // }
 
   update(field) {
     return e => this.setState({
@@ -59,14 +95,14 @@ class SessionForm extends React.Component {
   }
 
   selectForm() {
-    let formType, route, usernameInput, guestSignIn ;
+    let formType, bottomLink, usernameInput, guestSignIn ;
     if (this.props.formType === 'signin') {
       formType = 'Sign In';
       usernameInput = '';
-      route =
+      bottomLink =
         <p>
-          New to CineFlix? <Link to='signup'
-          className='new-session-signup'>Sign up now.</Link>
+          New to CineFlix?
+          <Link to='signup'className='new-session-signup'>Sign up now.</Link>
         </p>;
       guestSignIn =
         <button className='new-session-guestSignIn'
@@ -80,27 +116,23 @@ class SessionForm extends React.Component {
           type='text'
           value={this.state.username}
           onChange={this.update("username")} /></label>;
-      route =
+      bottomLink =
         <p>
-          Already have an account? <Link to='signin'
-          className='new-session-signin'>Sign In</Link>
+          Already have an account?
+          <Link to='signin'className='new-session-signin'>Sign In</Link>
         </p>;
     }
-    return ({ formType, route, usernameInput, guestSignIn });
+    return ({ formType, bottomLink, usernameInput, guestSignIn });
   }
 
   render() {
-    const { formType, route, usernameInput, guestSignIn } = this.selectForm();
-    const _redirectToMain = () => {
-      this.props.router.push('/');
-    };
-
+    const { formType, bottomLink, usernameInput, guestSignIn } = this.selectForm();
     return (
       <div className={'session-background'}>
-        <div className='header group'>
-          <h1 className='logo entry-logo' onClick={_redirectToMain} />
+        <div className='header'>
+          <h1 className='logo entry-logo' onClick={this.redirect()} />
         </div>
-        <div className='session-form group'>
+        <div className='session-form'>
           <h1 className='session-header'>{formType}</h1>
           {this.renderErrors()}
           <form onSubmit={this.handleSubmit}>
@@ -120,7 +152,7 @@ class SessionForm extends React.Component {
             <button className='session-button'>{formType}</button>
           </form>
           {guestSignIn}
-          {route}
+          {bottomLink}
         </div>
       </div>
     );

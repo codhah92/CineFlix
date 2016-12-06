@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li, button,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: inherit;
+  text-decoration: inherit;
+  background: transparent;
+  text-align: inherit;
+  color: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: content-box;
+  line-height: 1.5;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  min-width: 433px;
+}
+
+ul {
+ list-style: none;
+}
+
+.group:before {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ header {
+  height: 90px;
+  border: 0;
+  width: 100%;
+  background: #ccc;
+ }
+
+.main-logo {
+  background-image: asset-url("CineFlix.png");
+  height: 50px;
+  width: 185px;
+  background-size: cover;
+  float: left;
+  margin: 18px 26.719px 0px 26.719px;
+}
+
+.main-signin {
+  float: right;
+  margin: 18px 26.719px 0px 26.719px;
+}
+
+.link-signin {
+  float: right;
+  padding: 4px 11px 4px 11px;
+  background: #E50914;
+  display: block;
+  color: white;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.main-description {
+  color: white;
+  background: #ccc;
+  padding: 150px 0 350px 26.719px;
+}
+
+.main-catchphrase {
+  font-size: 3em;
+  text-shadow: 1px 1px 10px #000;
+  font-weight: 700;
+  line-height: 1.4em;
+}
+
+.main-motto {
+  text-transform: uppercase;
+  letter-spacing: .2px;
+  margin: 0 0 8px 0;
+}
+
+.main-signup a {
+  text-transform: uppercase;
+  background: #E50914;
+  display: block;
+  float: left;
+  font-size: 12px;
+  letter-spacing: 1.9px;
+  padding: 11px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.main-signup a:hover {
+  background: white;
+}
