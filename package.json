@@ -8,8 +8,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch"
+    "webpack": "webpack --watch",
+    "postinstall": "./node_modules/.bin/webpack"
   },
+  "engines": {
+    "node": "6.3.0",
+    "npm": "3.10.3"
+  }
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codhah92/CineFlix.git"
