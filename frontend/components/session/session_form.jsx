@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import FormHeader from '../../formHeader';
+import Footer from '../../footer';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -102,7 +104,7 @@ class SessionForm extends React.Component {
       bottomLink =
         <p>
           New to CineFlix?
-          <Link to='signup'className='new-session-signup'>Sign up now.</Link>
+          <Link to='signup'className='new-session-signup'> Sign up now.</Link>
         </p>;
       guestSignIn =
         <button className='new-session-guestSignIn'
@@ -119,7 +121,7 @@ class SessionForm extends React.Component {
       bottomLink =
         <p>
           Already have an account?
-          <Link to='signin'className='new-session-signin'>Sign In</Link>
+          <Link to='signin' className='new-session-signin'> Sign In</Link>
         </p>;
     }
     return ({ formType, bottomLink, usernameInput, guestSignIn });
@@ -128,32 +130,35 @@ class SessionForm extends React.Component {
   render() {
     const { formType, bottomLink, usernameInput, guestSignIn } = this.selectForm();
     return (
-      <div className={'session-background'}>
-        <div className='header'>
-          <h1 className='logo entry-logo' onClick={this.redirect()} />
-        </div>
-        <div className='session-form'>
+      <div className={'session-background group'}>
+        <FormHeader />
+        <div className='session-form group'>
           <h1 className='session-header'>{formType}</h1>
           {this.renderErrors()}
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor='form-email' className='form-label'>Email<input
-              id='form-email'
-              className='email'
-              type='text'
-              value={this.state.email}
-              onChange={this.update("email")} /></label>
+            <label htmlFor='form-email' className='form-label'>Email
+              <input
+                id='form-email'
+                className='email'
+                type='text'
+                value={this.state.email}
+                onChange={this.update("email")} />
+            </label>
             {usernameInput}
-            <label htmlFor='form-password' className='form-label'>Password<input
-              id='form-password'
-              className='password'
-              type='password'
-              value={this.state.password}
-              onChange={this.update("password")} /></label>
+            <label htmlFor='form-password' className='form-label'>Password
+              <input
+                id='form-password'
+                className='password'
+                type='password'
+                value={this.state.password}
+                onChange={this.update("password")} />
+              </label>
             <button className='session-button'>{formType}</button>
           </form>
-          {guestSignIn}
           {bottomLink}
+          {guestSignIn}
         </div>
+        <Footer/>
       </div>
     );
   }
