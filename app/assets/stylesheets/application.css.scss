@@ -57,11 +57,18 @@ ul {
   clear: both;
 }
 
+.main {
+  font-weight: lighter;
+  background: linear-gradient(to right, #000, rgba(0,0,0,0)), asset-url("mainSplash2.jpg") no-repeat center;
+  height: 800px;
+  width: auto;
+  background-size: cover;
+}
+
  header {
   height: 90px;
   border: 0;
   width: 100%;
-  background: #ccc;
  }
 
 .main-logo {
@@ -79,6 +86,8 @@ ul {
 }
 
 .link-signin {
+  font-size: 14px;
+  letter-spacing: 1.5px;
   float: right;
   padding: 4px 11px 4px 11px;
   background: #E50914;
@@ -88,16 +97,27 @@ ul {
   border-top-left-radius: 3px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+  border-bottom: 2px solid #880000
+}
+
+.link-signin:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
+}
+
+.link-signin:hover {
+  background: #FE0101;
+  cursor: pointer;
 }
 
 .main-description {
   color: white;
-  background: #ccc;
   padding: 150px 0 350px 26.719px;
 }
 
 .main-catchphrase {
-  font-size: 3em;
+  font-size: 70px;
   text-shadow: 1px 1px 10px #000;
   font-weight: 700;
   line-height: 1.4em;
@@ -105,8 +125,10 @@ ul {
 
 .main-motto {
   text-transform: uppercase;
-  letter-spacing: .2px;
-  margin: 0 0 8px 0;
+  letter-spacing: 1.4px;
+  margin: 0 0 20px 0;
+  font-size: 23px;
+  font-weight: 300;
 }
 
 .main-signup a {
@@ -121,8 +143,94 @@ ul {
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-bottom: 2px solid #880000
 }
 
 .main-signup a:hover {
-  background: white;
+  background: #FE0101;
+}
+
+.main-signup a:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
+}
+
+.main-guest-signin {
+  display: block;
+  float: left;
+  padding: 11px;
+  background: #E50914;
+  margin: 0 0 0 30px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.9px;
+  border-bottom: 2px solid #880000
+}
+
+.main-guest-signin:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
+}
+
+.main-guest-signin:hover {
+  cursor: pointer;
+  background: #FE0101;
+}
+
+.main-footer {
+  background: #141414;
+  height: 145px;
+  width: 0 auto;
+  color: white;
+}
+
+.main-questions {
+  float: left;
+  display: block;
+  margin: 30px 0 0 30px;
+  border: 1px solid #fff;
+  padding: 5px 10px 5px 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #565353;
+}
+
+.main-footer-ul {
+  float: right;
+  margin: 30px 30px 0 0;
+}
+
+.main-footer-ul li {
+  float: left;
+  margin: 0 0 0 50px;
+  display: block;
+  border: 1px solid #fff;
+  padding: 5px 10px 5px 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: 0.5s;
+  letter-spacing: 2.2px;
+  border-bottom: 2px solid #565353;
+}
+
+.main-footer-ul li:hover {
+  cursor: pointer;
+  background: #767676;
+}
+
+.main-footer-ul li:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
 }

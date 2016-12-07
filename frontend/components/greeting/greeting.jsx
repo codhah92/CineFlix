@@ -25,7 +25,7 @@ const Greeting = ({ currentUser, router, signin, signout }) => {
           </div>
         </header>
 
-        <section className='main-description'>
+        <section className='main-description group'>
           <p className='main-catchphrase'>See what's next.</p>
           <p className='main-motto'>Watch anywhere. Cancel anytime.</p>
           <div className='main-signup group'>
@@ -37,15 +37,13 @@ const Greeting = ({ currentUser, router, signin, signout }) => {
             onClick={guestSignIn}>Sign in as guest</button>
         </section>
 
-        <footer className='main-footer'>
-          <p className='main-questions'>Questions? Call 917-439-4682</p>
-          <nav className='main-footer-nav'>
-            <ul className='main-footer-ul'>
-              <li className='main-github'>Github</li>
-              <li className='main-profile'>Profile</li>
-              <li className='main-linkedIn'>Linkedin</li>
-            </ul>
-          </nav>
+        <footer className='main-footer group'>
+          <p className='main-questions'>Questions? Call 917–439–4682</p>
+          <ul className='main-footer-ul group'>
+            <li className='main-github'>Github</li>
+            <li className='main-profile'>Website</li>
+            <li className='main-linkedIn'>Linkedin</li>
+          </ul>
         </footer>
       </div>
     );
