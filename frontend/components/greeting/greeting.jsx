@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import Footer from '../../footer';
 
 const Greeting = ({ currentUser, router, signin, signout }) => {
 
@@ -8,7 +7,7 @@ const Greeting = ({ currentUser, router, signin, signout }) => {
     signin(
       { email: 'guest@guest.com', password: 'guestpass' }
     ).then(() => {
-      router.push('/home');
+      router.push('/browse');
     });
   };
 
@@ -37,8 +36,6 @@ const Greeting = ({ currentUser, router, signin, signout }) => {
           <button className='main-guest-signin'
             onClick={guestSignIn}>Sign in as guest</button>
         </section>
-
-        <Footer />
       </div>
     );
   } else {

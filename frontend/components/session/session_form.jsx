@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import FormHeader from '../../formHeader';
-import Footer from '../../footer';
+import FormHeader from '../formHeader';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class SessionForm extends React.Component {
 
   redirect() {
 		if (this.props.loggedIn) {
-			this.props.router.push("/home");
+			this.props.router.push('/browse');
 		}
 	}
 
@@ -156,7 +155,6 @@ class SessionForm extends React.Component {
           {bottomLink}
           {guestSignIn}
         </div>
-        <Footer/>
       </div>
     );
   }
