@@ -252,6 +252,7 @@ ul {
 }
 
 .form-label {
+  position: relative;
 }
 
 .email,
@@ -299,4 +300,31 @@ ul {
 .new-session-guestSignIn:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.form-errors {
+  color: red;
+}
+
+.emailError,
+.passwordError,
+.usernameError {
+  list-style: none;
+  color: #B00500;
+  bottom: auto;
+  font-size: 12px;
+  position: absolute;
+  display: block;
+  bottom: -30px;
+}
+
+.form-error {
+  display: block;
+  margin: 0 auto;
+  background: #7F7E7E;
+  text-align: center;
+  color: white;
+  border-radius: 2px;
+  font-weight: lighter;
+  letter-spacing: 2px;
 }

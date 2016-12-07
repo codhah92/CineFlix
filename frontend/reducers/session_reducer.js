@@ -12,8 +12,9 @@ const SessionReducer = (state = initialState, action) => {
       return { currentUser: action.currentUser, errors: [] };
     case RECEIVE_ERRORS:
       return { currentUser: null, errors: action.errors };
+    case CLEAR_ERRORS:
     default:
-      return state;
+      return initialState;
   }
 };
 

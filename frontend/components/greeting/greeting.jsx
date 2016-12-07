@@ -6,10 +6,10 @@ const Greeting = ({ currentUser, router, signin, signout }) => {
 
   const guestSignIn = () => {
     signin(
-      { email: 'guest@guest.com', password: 'guestpass' }, () => {
-        router.push('/');
-      }
-    );
+      { email: 'guest@guest.com', password: 'guestpass' }
+    ).then(() => {
+      router.push('/home');
+    });
   };
 
   const _redirectToMain = () => {

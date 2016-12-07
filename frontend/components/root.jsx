@@ -17,7 +17,7 @@ const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
-      replace('/');
+      replace('/home');
     }
   };
 
@@ -25,7 +25,9 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ GreetingContainer }/>
+          <IndexRoute
+            component={ GreetingContainer }
+            onEnter={ _redirectIfLoggedIn }/>
           <Route path="/signin"
             component={ SessionFormContainer }
             onEnter={ _redirectIfLoggedIn }/>
@@ -37,5 +39,9 @@ const Root = ({ store }) => {
     </Provider>
   );
 };
+
+// <Route path="/home"
+//   component={ HomeContainer }
+//   onEnter={ _redirectIfLoggedIn }/>
 
 export default Root;
