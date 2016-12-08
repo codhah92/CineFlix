@@ -1,0 +1,120 @@
+.main {
+  font-weight: lighter;
+  background: linear-gradient(to right, #000, rgba(0,0,0,0)), asset-url("mainSplash2.jpg") no-repeat center;
+  height: 800px;
+  width: auto;
+  background-size: cover;
+}
+
+ header {
+  height: 90px;
+  border: 0;
+  width: 100%;
+ }
+
+.main-logo {
+  background-image: asset-url("CineFlix.png");
+  height: 50px;
+  width: 185px;
+  background-size: cover;
+  float: left;
+  margin: 18px 26.719px 0px 26.719px;
+}
+
+.main-logo:hover {
+  cursor: pointer;
+}
+
+.main-signin {
+  float: right;
+  margin: 18px 26.719px 0px 26.719px;
+}
+
+.link-signin {
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  float: right;
+  padding: 6px 16px 6px 16px;
+  background: #E50914;
+  display: block;
+  color: white;
+  border-radius: 3px;
+  border-bottom: 2px solid #880000
+}
+
+.link-signin:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
+}
+
+.link-signin:hover {
+  background:rgb(244, 6, 18);
+  cursor: pointer;
+}
+
+.main-description {
+  color: white;
+  padding: 150px 0 350px 26.719px;
+}
+
+.main-catchphrase {
+  font-size: 70px;
+  text-shadow: 1px 1px 10px #000;
+  font-weight: 700;
+  line-height: 1.4em;
+}
+
+.main-motto {
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  margin: 0 0 20px 0;
+  font-size: 23px;
+  font-weight: 300;
+}
+
+.main-signup a {
+  text-transform: uppercase;
+  background: #E50914;
+  display: block;
+  float: left;
+  font-size: 12px;
+  letter-spacing: 1.9px;
+  padding: 11px;
+  border-radius: 3px;
+  border-bottom: 2px solid #880000
+}
+
+.main-signup a:hover {
+  background:rgb(244, 6, 18);
+}
+
+.main-signup a:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
+}
+
+.main-guest-signin {
+  display: block;
+  float: left;
+  padding: 11px;
+  background: #E50914;
+  margin: 0 0 0 30px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.9px;
+  border-bottom: 2px solid #880000
+}
+
+.main-guest-signin:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
+}
+
+.main-guest-signin:hover {
+  cursor: pointer;
+  background:rgb(244, 6, 18);
+}

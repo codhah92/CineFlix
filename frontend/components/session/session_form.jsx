@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import FormHeader from '../formHeader';
+import FormHeader from './formHeader';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -126,7 +126,7 @@ class SessionForm extends React.Component {
     const { formType, bottomLink, usernameInput, guestSignIn } = this.selectForm();
     return (
       <div className={'session-background group'}>
-        <FormHeader />
+        <FormHeader router={ this.props.router } />
         <div className='session-form group'>
           <h1 className='session-header'>{formType}</h1>
           {this.renderErrors()}

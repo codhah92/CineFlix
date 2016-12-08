@@ -16,12 +16,13 @@ const Dashboard = ({ currentUser, router, signout }) => {
   const currentUserUsername = (currentUser) ? currentUser.username : '';
   if (currentUser) {
     return (
-      <header className='browse-header'>
-        <nav className='browser'>
-          <h1 className='logo browse-logo' onClick={_redirectToBrowse} />
-          <div className='browse-user'>{currentUserUsername}
-            <ul className='browse-dropdown'>
-              <li className='browse-dropdown-item'>
+      <header className='browse-header group'>
+        <nav className='browser group'>
+          <h1 className='browse-logo' onClick={_redirectToBrowse} />
+          <h2 className='navbrowse-dropdown'>Browse</h2>
+          <div className='browse-user group'>{currentUserUsername}
+            <ul className='profile-dropdown'>
+              <li className='profile-dropdown-item'>
                 <button className='sign-out'
                   onClick={userSignout}>Sign out of CineFlix</button>
               </li>

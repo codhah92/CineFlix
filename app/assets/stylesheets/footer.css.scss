@@ -1,0 +1,47 @@
+
+.main-footer {
+  background: #141414;
+  height: 150px;
+  margin: 0 auto;
+  color: white;
+  font-weight: lighter;
+}
+
+.main-questions {
+  float: left;
+  display: block;
+  margin: 30px 0 0 30px;
+  border: 1px solid #fff;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #565353;
+}
+
+.main-footer-ul {
+  float: right;
+  margin: 30px 30px 0 0;
+}
+
+.main-footer-ul li {
+  float: left;
+  margin: 0 0 0 50px;
+  display: block;
+  border: 1px solid #fff;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  transition: 0.5s;
+  letter-spacing: 2.2px;
+  border-bottom: 2px solid #565353;
+}
+
+.main-footer-ul li:hover {
+  cursor: pointer;
+  background: #767676;
+}
+
+.main-footer-ul li:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -2px;
+}

@@ -6,6 +6,7 @@ const Browse = () => {
   return (
     <div>
       <DashboardContainer />
+      <div className="browser-content"/>
     </div>
   );
 };

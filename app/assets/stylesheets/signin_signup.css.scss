@@ -1,0 +1,100 @@
+.session-background {
+  background-image: asset-url("signInBack");
+  background-size: cover;
+  height: 773px;
+}
+
+.session-form {
+  margin: 30px auto;
+  width: 380px;
+  padding: 40px;
+  height: 447px;
+  background: #f3f3f3;
+  border: 2px solid #ccc;
+  color: #333;
+  font-weight: 350;
+}
+
+.session-header {
+  font-size: 36px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.form-label {
+  position: relative;
+}
+
+.email,
+.password,
+.username {
+  width: 100%;
+  height: 22px;
+  padding: 11px 10px;
+  border: 1px solid #ccc;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.session-button {
+  background: rgb(229, 9, 20);
+  width: 348px;
+  padding: 16px;
+  margin: 9px;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.55);
+  font-size: 18px;
+  font-weight: 250;
+  letter-spacing: 0.5px;
+}
+
+.session-button:hover {
+  cursor: pointer;
+  background:rgb(244, 6, 18);
+}
+
+.new-session-signin,
+.new-session-signup,
+.new-session-guestSignIn {
+  color: #0080FF;
+}
+
+.new-session-signup:hover,
+.new-session-signin:hover,
+.new-session-guestSignIn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.form-errors {
+  color: red;
+}
+
+.emailError,
+.passwordError,
+.usernameError {
+  list-style: none;
+  color: #B00500;
+  bottom: auto;
+  font-size: 12px;
+  position: absolute;
+  display: block;
+  bottom: -30px;
+}
+
+.form-error {
+  display: block;
+  margin: 0 auto;
+  background: #7F7E7E;
+  text-align: center;
+  color: white;
+  border-radius: 2px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}

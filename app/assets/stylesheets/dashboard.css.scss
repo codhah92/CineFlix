@@ -1,0 +1,60 @@
+.browse-header {
+  position: fixed;
+  height: 90px;
+  top: 0;
+  background: linear-gradient(to bottom, #000, rgba(0,0,0,0)), no-repeat center;
+}
+
+.browser-content {
+  height: 1000px;
+  background-image: asset-url("mainSplash.jpg");
+}
+
+.browse-logo {
+  background-image: asset-url("CineFlix.png");
+  height: 50px;
+  width: 185px;
+  background-size: cover;
+  float: left;
+  margin: 18px 26.719px 0px 26.719px;
+}
+
+.browse-logo:hover {
+  cursor: pointer;
+}
+
+.navbrowse-dropdown {
+  padding: 30px 26.719px 20px 26.719px;
+  float: left;
+  color: #E50914;
+  font-weight: 400;
+  cursor: pointer;
+  background: transparent;
+  display: inline-block;
+  position: relative;
+}
+
+.browse-user {
+  background: transparent;
+  color: white;
+  padding: 30px 26.719px 20px 26.719px;
+  font-size: 16px;
+  float: right;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  text-transform: capitalize;
+  margin-right: 26.719px;
+}
+
+.profile-dropdown-item {
+  font-size: 12px;
+  position: absolute;
+  left: -30px;
+  bottom: -50px;
+  list-style: none;
+  padding: 15px;
+}
+
+.profile-sign-out {
+}
