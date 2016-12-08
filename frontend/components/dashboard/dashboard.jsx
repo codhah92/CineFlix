@@ -23,7 +23,7 @@ const Dashboard = ({ currentUser, router, signout }) => {
           <div className='browse-user group'>{currentUserUsername}
             <ul className='profile-dropdown'>
               <li className='profile-dropdown-item'>
-                <button className='sign-out'
+                <button className='profile-sign-out'
                   onClick={userSignout}>Sign out of CineFlix</button>
               </li>
             </ul>

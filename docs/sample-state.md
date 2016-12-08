@@ -1,12 +1,16 @@
 ```javascript
 
 {
-  currentUser: {
-    id: 1,
-    username: "guest",
-    email: "guest@guest.com",
-    favorites: [favorite_id1, favorite_id2]
-  },
+  session:
+    {
+      currentUser:
+        {
+          id: 1,
+          username: "guest",
+          email: "guest@guest.com",
+          favorites: [favorite_id1, favorite_id2]
+        }
+    },
   forms: {
     signUp: {errors: []},
     logIn: {errors: []},
@@ -17,9 +21,22 @@
       description: "Zombie Survival Thriller",
       year: 2010,
       avg_rating: 3,
-      genre_id: 1,
+      genre_id: 1
     }
   },
+
+  series: {
+    more_like_this: [serieObject, serieObject],
+    index: {
+      1: {
+        title: "The Walking Dead",
+        description: "Zombie Survival Thriller",
+        year: 2010,
+        avg_rating: 3,
+        genres: [genreobject1, genreobject2]
+      }
+    }
+  }
   episodes: {
     1: {
       series_id: 1
@@ -27,10 +44,11 @@
       synopsis: "Rick is in trouble",
       video_url: youtube,
     }
-  }
+  },
   genres: {
     1: {
-      name: 'Thriller'
+      name: 'Thriller',
+      series: [serieObject, serieObject]
     }
   },
   reviews: {
