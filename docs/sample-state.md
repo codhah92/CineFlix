@@ -15,6 +15,7 @@
     signUp: {errors: []},
     logIn: {errors: []},
   },
+
   series: {
     1: {
       title: "The Walking Dead",
@@ -25,18 +26,18 @@
     }
   },
 
-  series: {
-    more_like_this: [serieObject, serieObject],
-    index: {
-      1: {
-        title: "The Walking Dead",
-        description: "Zombie Survival Thriller",
-        year: 2010,
-        avg_rating: 3,
-        genres: [genreobject1, genreobject2]
-      }
-    }
-  }
+  // series: {
+  //   more_like_this: [serieObject, serieObject],
+  //   index: {
+  //     1: {
+  //       title: "The Walking Dead",
+  //       description: "Zombie Survival Thriller",
+  //       year: 2010,
+  //       avg_rating: 3,
+  //       genres: [genreobject1, genreobject2]
+  //     }
+  //   }
+  // }
   episodes: {
     1: {
       series_id: 1

@@ -6,6 +6,7 @@ import SessionFormContainer from './session/session_form_container';
 import GreetingContainer from './greeting/greeting_container';
 import BrowseContainer from './browse/browse_container';
 import Browse from './browse/browse';
+import { clearErrors } from '../actions/session_actions';
 
 const Root = ({ store }) => {
 
@@ -17,6 +18,7 @@ const Root = ({ store }) => {
   };
 
   const _redirectIfLoggedIn = (nextState, replace) => {
+    store.dispatch(clearErrors());
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
       replace('/browse');

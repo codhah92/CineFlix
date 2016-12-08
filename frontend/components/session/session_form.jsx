@@ -21,16 +21,13 @@ class SessionForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     window.addEventListener('hashchange', () => {
       this.props.clearErrors();
+      this.setState({emailError: ""});
+      this.setState({passwordError: ""});
+      this.setState({usernameError: ""});
     });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.formType !== this.props.formType) {
-      this.props.clearErrors();
-    }
   }
 
   redirect() {
@@ -43,19 +40,13 @@ class SessionForm extends React.Component {
     e.preventDefault();
       if (this.state.email.length === 0) {
         this.setState({emailError: "Please enter a valid email."});
-      } else {
-        this.setState({emailError: ""});
       }
       if (this.state.password.length < 6) {
         this.setState({passwordError: "Your password must contain at least 6 characters."});
-      } else {
-        this.setState({passwordError: ""});
       }
       if (this.props.formType === 'signup') {
         if (this.state.username.length === 0) {
           this.setState({usernameError: "Please enter a valid username."});
-        } else {
-          this.setState({usernameError: ""});
         }
       }
 

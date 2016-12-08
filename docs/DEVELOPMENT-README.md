@@ -8,8 +8,8 @@
 
 CineFlix is a Netflix clone built using Ruby on Rails & React/Redux. The primary features of this website include:
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
+- [x] Hosting on Heroku
+- [x] New account creation, login, and guest/demo login
 - [ ] Production README
 - [ ] Smooth, bug-free navigation, adequate seed data and sufficient CSS styling
 
