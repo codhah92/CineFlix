@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import Modal from 'react-modal';
+import EpisodeIndexItem from './episode_index_item';
 
 class SerieIndexItem extends React.Component {
   constructor () {
@@ -51,6 +52,15 @@ class SerieIndexItem extends React.Component {
       },
     };
 
+    const episodeIndexItems = this.props.serie.episodes.map((episode, id) => {
+      return (
+        <div key={episode.id} className="episode-name">
+          {episode.title}
+          <EpisodeIndexItem episode={episode} />
+        </div>
+      );
+    });
+
     return (
       <div>
         <li className="serie-image">
@@ -73,6 +83,7 @@ class SerieIndexItem extends React.Component {
             <button>inside</button>
             <button>the modal</button>
           </form>
+          {episodeIndexItems}
         </Modal>
       </div>
     );
