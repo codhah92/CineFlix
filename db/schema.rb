@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208163340) do
+ActiveRecord::Schema.define(version: 20161209155037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "episodes", force: :cascade do |t|
+    t.integer  "serie_id",   null: false
+    t.string   "title",      null: false
+    t.text     "synopsis",   null: false
+    t.string   "video_url",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "episodes", ["serie_id"], name: "index_episodes_on_serie_id", using: :btree
+  add_index "episodes", ["title"], name: "index_episodes_on_title", using: :btree
 
   create_table "genres", force: :cascade do |t|
     t.string   "name",       null: false
@@ -25,15 +37,19 @@ ActiveRecord::Schema.define(version: 20161208163340) do
   add_index "genres", ["name"], name: "index_genres_on_name", using: :btree
 
   create_table "series", force: :cascade do |t|
-    t.string   "title",                   null: false
-    t.integer  "year",                    null: false
-    t.text     "description",             null: false
-    t.integer  "avg_rating",  default: 0
+    t.string   "title",                          null: false
+    t.integer  "year",                           null: false
+    t.text     "description",                    null: false
+    t.integer  "avg_rating",         default: 0
     t.string   "image_type"
     t.string   "image_name"
     t.integer  "image_size"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "series", ["title"], name: "index_series_on_title", using: :btree

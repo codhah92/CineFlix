@@ -21,14 +21,13 @@ class SessionForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  componentWillMount() {
-    window.addEventListener('hashchange', () => {
-      this.props.clearErrors();
-      this.setState({emailError: ""});
-      this.setState({passwordError: ""});
-      this.setState({usernameError: ""});
-    });
-  }
+  componentDidMount() {
+     window.addEventListener('hashchange', () => {
+       this.setState({emailError: ""});
+       this.setState({passwordError: ""});
+       this.setState({usernameError: ""});
+     });
+   }
 
   redirect() {
 		if (this.props.loggedIn) {

@@ -21,8 +21,7 @@
       title: "The Walking Dead",
       description: "Zombie Survival Thriller",
       year: 2010,
-      avg_rating: 3,
-      genre_id: 1
+      avg_rating: 3
     }
   },
 
@@ -46,12 +45,16 @@
       video_url: youtube,
     }
   },
-  genres: {
-    1: {
-      name: 'Thriller',
-      series: [serieObject, serieObject]
-    }
-  },
+  genres: [
+            {
+              name: 'Thriller',
+              series: [serieObject, serieObject]
+            },
+            {
+              name: 'Comedy',
+              series: [serieObject, serieObject]
+            }
+  ],
   reviews: {
     1: {
       user_id: 1,

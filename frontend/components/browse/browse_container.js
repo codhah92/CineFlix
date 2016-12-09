@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Browse from './browse';
 
-const mapStateToProps = state => ({
-  
+const mapStateToProps = () => ({
+
 });
 
 const mapDispatchToProps = dispatch => ({
