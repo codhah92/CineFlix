@@ -8,7 +8,6 @@ const Browse = () => {
     <div>
       <DashboardContainer />
       <GenreContainer />
-      <div className="browser-content"/>
     </div>
   );
 };

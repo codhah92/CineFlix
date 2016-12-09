@@ -21,8 +21,7 @@
       title: "The Walking Dead",
       description: "Zombie Survival Thriller",
       year: 2010,
-      avg_rating: 3,
-      genre_id: 1
+      avg_rating: 3
     }
   },
 
