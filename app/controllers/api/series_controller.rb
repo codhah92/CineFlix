@@ -1,4 +1,4 @@
-class SeriesController < ApplicationController
+class Api::SeriesController < ApplicationController
   def show
     @serie = Serie.find(params[:id])
   end

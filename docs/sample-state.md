@@ -46,12 +46,16 @@
       video_url: youtube,
     }
   },
-  genres: {
-    1: {
-      name: 'Thriller',
-      series: [serieObject, serieObject]
-    }
-  },
+  genres: [
+            {
+              name: 'Thriller',
+              series: [serieObject, serieObject]
+            },
+            {
+              name: 'Comedy',
+              series: [serieObject, serieObject]
+            }
+  ],
   reviews: {
     1: {
       user_id: 1,
