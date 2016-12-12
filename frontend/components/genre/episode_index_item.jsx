@@ -4,9 +4,10 @@ import { Link, withRouter } from 'react-router';
 class EpisodeIndexItem extends React.Component {
   render() {
     return (
-      <li className="episode-image">
-        <img src={this.props.episode.image_url} />
-      </li>
+      <img className="episode-image"
+        src={this.props.episode.image_url}
+        onClick={this.props.changeIt.bind(null, this.props.episode.video_url)}
+        />
     );
   }
 }

@@ -1,0 +1,33 @@
+.episode-index-items {
+  padding: 20px;
+}
+.episode-group {
+  display: block;
+  float: left;
+  width: 300px;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+.episode-image {
+  float: left;
+  display: block;
+}
+
+.episode-image:hover {
+  cursor: pointer;
+}
+
+.episode-synopsis {
+  font-size: .9em;
+  color: #b3b3b3;
+  margin: 4px 0 0;
+  line-height: 1.2em;
+  font-weight: 300;
+}
+
+.episode-title {
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+}

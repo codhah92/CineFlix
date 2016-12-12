@@ -1,0 +1,60 @@
+.top-modal {
+  margin: 20px;
+  padding: 0 0 20px 0;
+  border-bottom: 2px solid #000;
+  height: 200px;
+}
+
+.description-info,
+.other-details {
+  margin-top: 20px;
+}
+
+.serie-title {
+  font-size: 1.75em;
+  font-weight: 400;
+  color: #fff;
+}
+
+.serie-year {
+  font-size: 13.5px;
+  color: #828282;
+}
+
+.description-info {
+  position: relative;
+  width: 70%;
+  float: left;
+}
+
+.other-details {
+  float: left;
+  width: 30%;
+  font-size: 13.5px;
+  color: #828282;
+  line-height: 18px;
+  font-weight: 300;
+}
+
+.star {
+  font-size: 1.4vw;
+  display: block;
+}
+
+.star:hover {
+  color: gold;
+}
+
+.serie-year {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: 44px;
+}
+
+.serie-description {
+  color: #fff;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 300;
+}
