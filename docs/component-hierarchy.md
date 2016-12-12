@@ -3,8 +3,8 @@
 **AuthFormContainer**
   - AuthForm
 
-**NavbarContainer**
-  - Navbar
+**DashboardContainer**
+  - Dashboard
     * Browse Dropdown
       * Browse
       * MyList
@@ -46,8 +46,8 @@
 
 | Path	| Component |
 |-------|-----------|
-|"/sign-up"	| "AuthFormContainer" |
-|"/sign-in" |	"AuthFormContainer" |
+|"/signup"	| "AuthFormContainer" |
+|"/signin" |	"AuthFormContainer" |
 |"/browse" | "SeriesContainer" |
 |"/browse/my-list" | "MyList" |
 |"/browse/genre/:genreId" | "Genre" |

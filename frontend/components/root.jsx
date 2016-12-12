@@ -38,7 +38,9 @@ const Root = ({ store }) => {
           <Route path="/signup"
             component={ SessionFormContainer }
             onEnter={ _redirectIfLoggedIn }/>
-          <Route path="/browse" component={ BrowseContainer }/>
+          <Route path="/browse"
+            component={ BrowseContainer }
+            onEnter={_ensureLoggedIn}/>
         </Route>
       </Router>
     </Provider>

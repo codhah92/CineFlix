@@ -1,0 +1,37 @@
+.genre-index {
+  background: #141414;
+  padding: 0 40px;
+  color: #999;
+  font-size: 20px;
+}
+
+.genre-title {
+  display: block;
+  width: 200px;
+}
+
+.genre-title:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.genre-index-item {
+  float: left;
+}
+
+.serie-group {
+  float: left;
+}
+
+.serie-image {
+  width: 220px;
+  height: 127.25px;
+  overflow: hidden;
+  opacity: 0.7;
+  background: black;
+}
+
+.serie-image:hover {
+  cursor: pointer;
+  opacity: 1;
+}

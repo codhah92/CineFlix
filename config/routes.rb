@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :genres, only: [:index]
     resources :series, only: [:show, :create]
+    resources :episodes, only: [:show, :index]
   end
 end

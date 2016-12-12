@@ -16,7 +16,7 @@
     logIn: {errors: []},
   },
 
-  series: {
+  serie: {
     1: {
       title: "The Walking Dead",
       description: "Zombie Survival Thriller",

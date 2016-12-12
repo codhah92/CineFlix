@@ -3,11 +3,13 @@
   height: 90px;
   top: 0;
   background: linear-gradient(to bottom, #000, rgba(0,0,0,0)), no-repeat center;
+  z-index: 1;
 }
 
 .browser-content {
-  height: 1000px;
-  background-image: asset-url("mainSplash.jpg");
+  height: 600px;
+  background-image: asset-url("browser_most_recent.jpg");
+  background-size: cover;
 }
 
 .browse-logo {
@@ -47,14 +49,25 @@
   margin-right: 26.719px;
 }
 
+.browse-user:hover {
+  .profile-dropdown-item {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+  }
+}
+
 .profile-dropdown-item {
-  font-size: 12px;
-  position: absolute;
-  left: -30px;
-  bottom: -50px;
-  list-style: none;
-  padding: 15px;
+  display: none;
+  border-top: 2px solid #fff;
+  background: rgba(0,0,0,.7);
+  width: 165px;
 }
 
 .profile-sign-out {
+  cursor: pointer;
+  padding: 1.5em 2em;
+  font-size: 12px;
+  color: #fff;
 }

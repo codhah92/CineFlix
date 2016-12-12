@@ -3,10 +3,10 @@
 # Table name: series_genres
 #
 #  id         :integer          not null, primary key
-#  series_id  :integer
 #  genre_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  serie_id   :integer
 #
 
 class SeriesGenre < ActiveRecord::Base
