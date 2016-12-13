@@ -16,7 +16,6 @@ User.create!({
 Genre.destroy_all
 
 all_genres = [
-  Genre.create!(name: "My List"),
   #0
   Genre.create!(name: "Thrillers"),
   #1
@@ -44,7 +43,7 @@ all_series = [
     description: 'Waking up in an empty hospital after weeks in a coma, County Sheriff Rick Grimes (Andrew Lincoln) finds himself utterly alone. The world as he knows it is gone, ravaged by a zombie epidemic.',
     year: 2014,
     image: File.open('app/assets/images/series/the-walking-dead.jpg'),
-    genres: [all_genres[1]]
+    genres: [all_genres[0]]
   }),
 #1 Breaking Bad
   Serie.create!({
@@ -52,7 +51,7 @@ all_series = [
     description: 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family''s future.',
     year: 2008,
     image: File.open('app/assets/images/series/breaking_bad/breaking-bad-season-4.jpg'),
-    genres: [all_genres[2], all_genres[1]]
+    genres: [all_genres[1], all_genres[0]]
   }),
 #2 Conan O'Brien
   Serie.create!({
@@ -60,7 +59,7 @@ all_series = [
     description: 'A late-night comedy show hosted by writer, comedian and performer Conan O''Brien',
     year: 2002,
     image: File.open('app/assets/images/series/conan-o-brien.jpg'),
-    genres: [all_genres[3]]
+    genres: [all_genres[2]]
   }),
 #3 SuperGirl
   Serie.create!({
@@ -68,7 +67,7 @@ all_series = [
     description: 'The adventures of Superman''s cousin in her own superhero career.',
     year: 2015,
     image: File.open('app/assets/images/series/supergirl.png'),
-    genres: [all_genres[4], all_genres[2]]
+    genres: [all_genres[3], all_genres[1]]
   }),
 #4 NBA Knicks Highlights
   Serie.create!({
@@ -76,7 +75,7 @@ all_series = [
     description: 'Watch the Knicks as they wheel and deal through the 2016-17 season!',
     year: 2016,
     image: File.open('app/assets/images/series/knicks.jpg'),
-    genres: [all_genres[6]]
+    genres: [all_genres[5]]
   }),
 #5 Ruby
   Serie.create!({
@@ -84,7 +83,7 @@ all_series = [
     description: 'Learn the basics of Ruby!',
     year: 2013,
     image: File.open('app/assets/images/series/ruby.jpg'),
-    genres: [all_genres[8]]
+    genres: [all_genres[7]]
   }),
 #6 Javascript
   Serie.create!({
@@ -92,7 +91,7 @@ all_series = [
     description: 'Learn to the basics of Javascript!',
     year: 2015,
     image: File.open('app/assets/images/series/javascript.png'),
-    genres: [all_genres[8]]
+    genres: [all_genres[7]]
   }),
 #7 React
   Serie.create!({
@@ -100,7 +99,7 @@ all_series = [
     description: 'Improve your Javascript capabilities with React!',
     year: 2016,
     image: File.open('app/assets/images/series/react.png'),
-    genres: [all_genres[8]]
+    genres: [all_genres[7]]
   }),
 #8 Redux
   Serie.create!({
@@ -108,7 +107,7 @@ all_series = [
     description: 'Mastered Javascript and React? Learn Redux!',
     year: 2016,
     image: File.open('app/assets/images/series/redux.png'),
-    genres: [all_genres[8]]
+    genres: [all_genres[7]]
   }),
 #9 Rails
   Serie.create!({
@@ -116,7 +115,7 @@ all_series = [
     description: 'Mastered Ruby? Learn to become a Ruby on Rails developer!',
     year: 2016,
     image: File.open('app/assets/images/series/rails.jpg'),
-    genres: [all_genres[8]]
+    genres: [all_genres[7]]
   })
 ]
 

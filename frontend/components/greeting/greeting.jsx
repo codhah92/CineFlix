@@ -42,7 +42,10 @@ const Greeting = ({ currentUser, router, signin, signout }) => {
     return (
       <div>
         <h1 className="greeting">Hi, {currentUser.username}</h1>
-        <button className="signout" onClick={signout}>Sign Out</button>
+        <button
+          className="signout"
+          onClick={signout}>Sign Out
+        </button>
       </div>
     );
   }

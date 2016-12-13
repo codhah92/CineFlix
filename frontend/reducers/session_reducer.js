@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
+import { REMOVE_FAVORITE_SERIE, ADD_FAVORITE_SERIE } from '../actions/favorite_actions';
 import merge from 'lodash/merge';
 
 const initialState = {
@@ -7,7 +8,7 @@ const initialState = {
 };
 
 const SessionReducer = (state = initialState, action) => {
-  const newState = merge({}, state);
+  let newState = merge({}, state);
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
@@ -17,6 +18,17 @@ const SessionReducer = (state = initialState, action) => {
     case CLEAR_ERRORS:
       newState.errors = [];
       return newState;
+    case ADD_FAVORITE_SERIE:
+      let previousFavorites = newState.currentUser.favorites.series;
+      let newFavorites = [action.serie, ...previousFavorites];
+      newState.currentUser.favorites.series = newFavorites;
+      return newState;
+    // case REMOVE_FAVORITE_SERIE:
+    //   newState = state.slice();
+    //   let serie = action.serie;
+    //   previousFavorites = newState[0].series;
+    //   previousFavorites.splice(previousFavorites.indexOf(serie));
+    //   return newState;
     default:
       return state;
   }
