@@ -22,8 +22,9 @@ class GenreIndex extends React.Component {
         <li className="serie-index-item">
           <GenreIndexItem
             genre={ this.props.favorites }
-            addSerieToMyList={ this.props.createMyListItem }>
-
+            addSerieToMyList={ this.props.createMyListItem }
+            removeSerieFromMyList={ this.props.removeMyListItem }
+            favorites={ this.props.favorites }>
           </GenreIndexItem>
         </li>
       </ul>]);
@@ -35,6 +36,8 @@ class GenreIndex extends React.Component {
             <GenreIndexItem
               genre={genre}
               addSerieToMyList={this.props.createMyListItem}
+              removeSerieFromMyList={ this.props.removeMyListItem }
+              favorites={ this.props.favorites }
             />
           </li>
         </ul>

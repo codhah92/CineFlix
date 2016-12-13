@@ -24,6 +24,9 @@ class GenreIndexItem extends React.Component {
             className="serie-index-item group"
             serie={ serie }
             addSerieToMyList={ this.props.addSerieToMyList }
+            genre={ this.props.genre }
+            removeSerieFromMyList={ this.props.removeSerieFromMyList }
+            favorites={ this.props.favorites }
           />
           </div>
         )) }

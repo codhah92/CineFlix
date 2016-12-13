@@ -15,6 +15,7 @@ class SerieIndexItem extends React.Component {
       // props.serie.episodes[0].video_url
     };
 
+    this.handleMyListClick = this.handleMyListClick.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.changeCurrentVideoId = this.changeCurrentVideoId.bind(this);
@@ -34,6 +35,37 @@ class SerieIndexItem extends React.Component {
 
   changeCurrentVideoId(id) {
     this.setState({ currentVideoId: id});
+  }
+
+  handleMyListClick(serie) {
+    if (this.isSerieInMyList()) {
+      this.props.removeSerieFromMyList(serie);
+    } else {
+      this.props.addSerieToMyList(serie);
+    }
+  }
+
+  isSerieInMyList() {
+    for (let i = 0; i < this.props.favorites.series.length; i++) {
+      if (this.props.favorites.series[i].id === this.props.serie.id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  renderMyListToggle() {
+    let myListButtonText;
+    if (this.isSerieInMyList()) {
+      myListButtonText = String.fromCharCode(10003) + " MY LIST";
+    } else {
+      myListButtonText = String.fromCharCode(65291) + " MY LIST";
+    }
+    return (
+      <button
+        className='my-list-button'
+        onClick={ () => this.handleMyListClick(this.props.serie)}>{myListButtonText}</button>
+    );
   }
 
   render () {
@@ -108,11 +140,7 @@ class SerieIndexItem extends React.Component {
               </p>
             </section>
             <section className="other-details">
-              <button
-                className="addMyList"
-                onClick={ () => this.props.addSerieToMyList(this.props.serie)}>
-                MyListADD
-              </button>
+              <p>{this.renderMyListToggle()}</p>
               <p className="serie-genres">Genres: {this.props.serie.genres}</p>
             </section>
           </div>

@@ -23,12 +23,11 @@ const SessionReducer = (state = initialState, action) => {
       let newFavorites = [action.serie, ...previousFavorites];
       newState.currentUser.favorites.series = newFavorites;
       return newState;
-    // case REMOVE_FAVORITE_SERIE:
-    //   newState = state.slice();
-    //   let serie = action.serie;
-    //   previousFavorites = newState[0].series;
-    //   previousFavorites.splice(previousFavorites.indexOf(serie));
-    //   return newState;
+    case REMOVE_FAVORITE_SERIE:
+      let serie = action.serie;
+      previousFavorites = newState.currentUser.favorites.series;
+      previousFavorites.splice(previousFavorites.indexOf(serie));
+      return newState;
     default:
       return state;
   }
