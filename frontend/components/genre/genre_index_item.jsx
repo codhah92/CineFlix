@@ -8,7 +8,7 @@ class GenreIndexItem extends React.Component {
 
     const settings = {
         slidesToShow: 6,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         infinite: true
       };
 

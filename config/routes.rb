@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:index]
     resources :series, only: [:show, :create]
     resources :episodes, only: [:show, :index]
+    resources :favorites, only: [:index, :create, :destroy]
   end
 end

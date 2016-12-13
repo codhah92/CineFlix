@@ -13,4 +13,5 @@ class Genre < ActiveRecord::Base
 
   has_many :series_genres
   has_many :series, through: :series_genres, source: :serie
+  has_many :favorites, through: :series, source: :favorites
 end

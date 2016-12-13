@@ -1,16 +1,14 @@
-export const createFavorite = (serie, genre, success) => {
-  $.ajax({
+export const createFavorite = (serie_id) => {
+  return $.ajax({
     method: 'POST',
     url: `api/favorites`,
-    data: { favorite: { serie_id: serie.id } },
-    success
+    data: { favorite: { serie_id } }
   });
 };
 
-export const destroyFavorite = (serie, success) => {
-  $.ajax ({
+export const removeFavorite = (id) => {
+  return $.ajax ({
     method: 'DELETE',
-    url: `api/favorites/${serie.id}`,
-    success
+    url: `api/favorites/${id}`
   });
 };

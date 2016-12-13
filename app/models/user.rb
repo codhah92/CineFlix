@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
 
+  has_many :favorites
+
+  has_many :favorited_series, through: :favorites, source: :serie
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

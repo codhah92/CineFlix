@@ -63,7 +63,6 @@ class SerieIndexItem extends React.Component {
         margin                     : '0 auto'
       },
     };
-
     const episodeIndexItems = this.props.serie.episodes.map((episode, id) => {
       return (
         <div key={episode.id} className="episode-group group">
