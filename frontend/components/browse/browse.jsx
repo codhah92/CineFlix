@@ -4,12 +4,13 @@ import DashboardContainer from '../dashboard/dashboard_container';
 import GenreContainer from '../genre/genre_container';
 
 
-const Browse = () => {
+const Browse = ({ children }) => {
   return (
     <div>
       <DashboardContainer />
       <div className="browser-content"/>
       <GenreContainer />
+      { children }
     </div>
   );
 };

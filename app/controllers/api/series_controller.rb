@@ -12,6 +12,11 @@ class Api::SeriesController < ApplicationController
     end
   end
 
+  def search
+    @series = Serie.where("LOWER(title) ~ ?", params[:query].downcase)
+    render :search
+  end
+
   private
 
   def serie_params

@@ -7,6 +7,8 @@ import GreetingContainer from './greeting/greeting_container';
 import BrowseContainer from './browse/browse_container';
 import Browse from './browse/browse';
 import { clearErrors } from '../actions/session_actions';
+import DashboardContainer from './dashboard/dashboard_container';
+import SearchContainer from './search/search_container';
 
 const Root = ({ store }) => {
 
@@ -40,6 +42,9 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedIn }/>
           <Route path="/browse"
             component={ BrowseContainer }
+            onEnter={_ensureLoggedIn}/>
+          <Route path="/search"
+            component={ SearchContainer }
             onEnter={_ensureLoggedIn}/>
         </Route>
       </Router>

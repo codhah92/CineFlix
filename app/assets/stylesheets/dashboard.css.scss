@@ -41,12 +41,12 @@
   color: white;
   padding: 30px 26.719px 20px 26.719px;
   font-size: 16px;
-  float: right;
   cursor: pointer;
-  position: relative;
+  position: absolute;
   display: inline-block;
   text-transform: capitalize;
-  margin-right: 26.719px;
+  top: 0px;
+  right: 20px;
 }
 
 .browse-user:hover {

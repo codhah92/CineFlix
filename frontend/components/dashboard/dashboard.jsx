@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import SearchBarContainer from '../search/search_bar_container';
 
-const Dashboard = ({ currentUser, router, signout }) => {
+const Dashboard = ({ currentUser, router, signout, alwaysOpen }) => {
 
   const userSignout = () => {
     signout().then(() => {
@@ -20,14 +21,15 @@ const Dashboard = ({ currentUser, router, signout }) => {
         <nav className='browser group'>
           <h1 className='browse-logo' onClick={_redirectToBrowse} />
           <h2 className='navbrowse-dropdown'>Browse</h2>
-          <div className='browse-user group'>{currentUserUsername}
+          <SearchBarContainer router={ router } alwaysOpen={ alwaysOpen }/>
+          <h2 className='browse-user group'>{currentUserUsername}
             <ul className='profile-dropdown'>
               <li className='profile-dropdown-item'>
                 <button className='profile-sign-out'
                   onClick={userSignout}>Sign out of CineFlix</button>
               </li>
             </ul>
-          </div>
+          </h2>
         </nav>
       </header>
     );
