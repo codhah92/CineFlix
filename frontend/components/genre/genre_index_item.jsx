@@ -13,9 +13,7 @@ class GenreIndexItem extends React.Component {
       };
 
     let seriesContent;
-    if( this.props.genre.series.length === 0 ){
-      seriesContent = <label className='notFound'>No Series Found!</label>;
-    } else if (this.props.genre.series.length < 6) {
+    if (this.props.genre.series.length < 6) {
       seriesContent = <div>{ this.props.genre.series.map((serie, i) => (
         <div key={i}>
           <SerieIndexItem

@@ -17,13 +17,13 @@ class SearchBar extends React.Component {
 
   handleChange(e) {
     e.preventDefault();
-    if (this.state.queryString.length === ""){
-      this.props.router.push('/browse');
-    } else {
+    this.setState({ queryString: e.currentTarget.value});
+    if (this.state.queryString.length > 0){
       this.props.router.push('/search');
     }
-    this.setState({ queryString: e.currentTarget.value});
+
     this.props.searchTitles(this.state.queryString);
+    this.props.searchGenres(this.state.queryString);
   }
 
   clickedSearchBar() {

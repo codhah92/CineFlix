@@ -16,7 +16,7 @@ class GenreIndex extends React.Component {
    }
 
   render() {
-    const favorites = (
+    let favorites = (
       [<ul className="genre-carousel-row group">
         <li className="genre-title">My List</li>
         <li className="serie-index-item group">
@@ -28,7 +28,11 @@ class GenreIndex extends React.Component {
           </GenreIndexItem>
         </li>
       </ul>]);
+
     const genreIndexItems = this.props.genres.map((genre, id) => {
+      if( genre.series.length === 0 ){
+        return (<div className="genre-index-without-series"></div>);
+      } else {
       return (
         <ul key={genre.id} className="genre-carousel-row group">
           <li className="genre-title">{genre.name}</li>
@@ -42,7 +46,8 @@ class GenreIndex extends React.Component {
           </li>
         </ul>
       );
-    });
+    }});
+
     return (
       <div className='genre-index group'>
         { favorites.concat(genreIndexItems) }

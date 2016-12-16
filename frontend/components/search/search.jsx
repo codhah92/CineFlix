@@ -17,8 +17,7 @@ class Search extends React.Component {
   }
 
   render () {
-    debugger
-    const searchIndexItems = this.props.searchedTitles.map((title) => {
+    const searchIndexItems = this.props.searchResults.map((title) => {
       return (
         <ul className="search-carousel group">
           <li key={title.id} className="search-index-item">

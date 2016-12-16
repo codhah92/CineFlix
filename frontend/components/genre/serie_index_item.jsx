@@ -136,6 +136,12 @@ class SerieIndexItem extends React.Component {
       );
     });
 
+    const genres = this.props.serie.genres.map((genre, id) => {
+      return (
+        <li>{genre.name}</li>
+      );
+    });
+
     return (
       <div className="serie-group group">
         <img src={this.props.serie.image_url}
@@ -162,7 +168,7 @@ class SerieIndexItem extends React.Component {
             </section>
             <section className="other-details">
               <p>{this.renderMyListToggle()}</p>
-              <p className="serie-genres">Genres: {this.props.serie.genres}</p>
+              <p className="serie-genres">Genres: {genres}</p>
             </section>
           </div>
           <section className="episode-index-items group">
