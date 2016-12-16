@@ -6,77 +6,32 @@
 
 ## Minimum Viable Product
 
-CineFlix is a Netflix clone built using Ruby on Rails & React/Redux. The primary features of this website include:
+CineFlix is a full-stack web application inspired by Netflix. It is built
+on a backend of Ruby on Rails and PostgreSQL. The frontend was implemented
+with Javascript, React.js and a Redux architectural framework.
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
-- [ ] Production README
-- [ ] Smooth, bug-free navigation, adequate seed data and sufficient CSS styling
+## Videos
+Videos are retrieved from a YouTube API. The react-youtube library is used
+to play videos of each 'episode' through its containing 'video_url'.
+Episodes are listed as an array inside of a 'serie' object and 'serie' objects
+are held within a 'series' array within each 'genre'. When a user logs in
+to CineFlix, the user is directed to the /browse page of his or her personal
+video listing and is able to view every genre that holds serie objects. The user
+can then access a serie object's episodes by clicking into any of these serie objects.
 
-- [ ] Videos
-  - Access various series to pick & play video clips
+## Serie
+When a serie object is clicked in the browse page, a modal is rendered on the
+screen, autoplaying the first episode of the current series 
 
-- [ ] Ratings
-  - Rate a series
+## Ratings
+Ratings are stored within each serie object. Serie objects also hold an
+'avg_rating', which is calculated through a SQL query that finds the average
+of every rating of that serie by all users in the database. Ratings are created
+and updated both in the frontend and backend
+## My List
 
-- [ ] My List
-  - Create a list to keep track of series user is interested in
+## Image Carousel (Wrap-around Infinite Scroll)
 
-- [ ] Wrap-around Scroll
-  - Series are organized by genre with a 'wrap-around' scroll
+## Search
 
-- [ ] Search
-  - Search for a series by genre or title (cast as a bonus)
-
-- Bonus:
-  - [ ] Continue Watching
-    - Keep track of which episode a user was on for a given series/show
-  - [ ] Featured Series
-    - Browser Home will have a 'feature' series to watch based on most recent addition
-  - [ ] Infinite Scroll
-    - More genres will load when scrolling to bottom of Browser Home
-  - [ ] Auto-play
-    - Clips will auto-play following clips in series
-  - [ ] Suggested Series
-    - Series will be suggested based on user's watch history
-  - [ ] Notifications Bell
-    - Notifications for new additions added to database
-  - [ ] OAuth
-    - OAuth login using Facebook
-
-## Design Docs
-* [View Wireframes](wireframes)
-* [React Components](component-hierarchy.md)
-* [API endpoints](api-endpoints.md)
-* [DB schema](schema.md)
-* [Sample State](sample-state.md)
-
-## Implementation Timeline
-
-### Phase 1: Backend setup and Front End User Authentication (2 days)
-
-**Objective:** Functioning rails project with front-end Authentication
-
-### Phase 2: Series Model, API, and components (2 days)
-
-**Objective:** Series can be created, read, edited and destroyed through the API.
-
-### Phase 3: Episode Model, API, and components (2 days)
-
-**Objective:** Episodes can be created, read, edited and destroyed through the API.
-
-### Phase 4: Ratings (2 days)
-
-**Objective:** Ratings belong to series that can be created, read, edited and destroyed through the API.
-
-### Phase 5: Search (1 day)
-
-**Objective:** Be able to search for series by genre or title
-
-### Phase 6: My List (1 day)
-
-**Objective:** Be able to create a list of series-to-watch that can be updated (added to & removed from)
-
-### Phase 7: Infinite scroll for Browser Home (1 day)
-
-**Objective:** Add infinite scroll to Browser Home
+## Future Directions for the Project

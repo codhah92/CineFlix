@@ -13,7 +13,7 @@ class Api::SeriesController < ApplicationController
   end
 
   def search
-    @series = Serie.where("LOWER(title) ~ ?", params[:query].downcase)
+    @series = Serie.includes(:episodes).where("LOWER(title) ~ ?", params[:query].downcase)
     render :search
   end
 
