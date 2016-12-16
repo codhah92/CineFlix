@@ -12,13 +12,11 @@
 .search-form-clicked {
   font-weight: 300;
   position: absolute;
-  top: 32px;
+  top: 31px;
   right: 150px;
   z-index: 1001;
   background: transparent;
   color: #fff;
-  transition: 0.5s;
-  transform: scale(1.3);
   outline: none;
   border: 0.5px solid white;
   padding: 5px;
@@ -39,6 +37,12 @@
 
 .search-results-container {
   height: 800px;
+  opacity: 0;
+  transition: opacity 1.3s;
+}
+
+.display-search-results {
+  opacity: 1;
 }
 
 .search-results {
@@ -51,10 +55,14 @@
   background: #141414;
 }
 
+.search-results-container {
+  margin-left: 20px;
+}
+
 .search-carousel {
   float: left;
   background: #141414;
-  margin: 0px 10px 40px 10px;
+  margin: 0px 5px 40px 0;
 }
 
 .search-index-item {

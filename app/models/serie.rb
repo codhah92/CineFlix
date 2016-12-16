@@ -26,5 +26,13 @@ class Serie < ActiveRecord::Base
   has_many :genres, through: :series_genres, source: :genre
   has_many :episodes, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  # has_many :reviews, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+
+  def get_avg_rating
+    Review.select('AVG(rating)').where('serie_id = ?', self.id).group(:serie_id)
+  end
+
+  def user_rating(user)
+    Review.select('rating').where('serie_id = ? AND user_id = ?', self.id, user.id)
+  end
 end

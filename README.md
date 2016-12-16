@@ -2,7 +2,7 @@
 
 [CineFlix live][heroku]
 
-[heroku]: http://cineflix.herokuapp.com/
+[heroku]: http://cineflixx.herokuapp.com/
 
 ## Minimum Viable Product
 

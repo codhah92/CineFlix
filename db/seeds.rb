@@ -31,8 +31,20 @@ all_genres = [
   #6
   Genre.create!(name: "Documentaries"),
   #7
-  Genre.create!(name: "Coding")
+  Genre.create!(name: "Coding"),
   #8
+  Genre.create!(name: "Horror Movies"),
+  #9
+  Genre.create!(name: "International Movies"),
+  #10
+  Genre.create!(name: "Music Videos"),
+  #11
+  Genre.create!(name: "TV Dramas"),
+  #12
+  Genre.create!(name: "Popular On Cineflix"),
+  #13
+  Genre.create!(name: "Food Adventures")
+  #14
 ]
 
 Serie.destroy_all
@@ -116,13 +128,21 @@ all_series = [
     year: 2016,
     image: File.open('app/assets/images/series/rails.jpg'),
     genres: [all_genres[7]]
-  })
+  }),
+#10
+  Serie.create!({
+    title: 'Westworld',
+    description: 'Mastered Ruby? Learn to become a Ruby on Rails developer!',
+    year: 2016,
+    image: File.open('app/assets/images/series/rails.jpg'),
+    genres: [all_genres[12]]
+  }),
 ]
 
 Episode.destroy_all
 
 all_episodes = [
-
+#Walking Dead
   Episode.create!({
     title: 'Days Gone Bye',
     synopsis: 'Wounded in the line of duty, King County sheriff''s deputy, Rick Grimes, wakes from a coma to find the world infested by zombies. Alone and disoriented, he sets off in search of his wife and son.',
@@ -131,22 +151,54 @@ all_episodes = [
     video_url: 'GJRNHAJAcYg',
     episode_number: 1
   }),
-
+  Episode.create!({
+    title: 'Guts',
+    synopsis: 'Rick unknowingly causes a group of survivors to be trapped by walkers. The group dynamic devolves from accusations to violence, as Rick must confront an enemy far more dangerous than the undead.',
+    serie_id: all_series[0].id,
+    image: File.open('app/assets/images/series/walking_dead/walking-dead-episode-2.jpg'),
+    video_url: 'fYIqssyz-sI',
+    episode_number: 2
+  }),
   Episode.create!({
     title: 'Tell It to the Frogs',
     synopsis: 'Driving back to camp, Morales warns Rick about Merle''s brother, Daryl, who will be irate about his brother''s abandonment. Glenn arrives at camp first, and Shane and Dale chastise him about drawing walkers with the alarm. Jim disconnects the alarm just as the cube van approaches.',
     serie_id: all_series[0].id,
-    image: File.open('app/assets/images/series/walking_dead/walking-dead-episode-2.png'),
-    video_url: 'ajepwfw',
-    episode_number: 2
+    image: File.open('app/assets/images/series/walking_dead/walking-dead-episode-3.png'),
+    video_url: 'PRUO5fMR8xk',
+    episode_number: 3
+  }),
+  Episode.create!({
+    title: 'Vatos',
+    synopsis: 'Rick''s mission to Atlanta is jeopardized when things go awry. Jim becomes unhinged in camp.',
+    serie_id: all_series[0].id,
+    image: File.open('app/assets/images/series/walking_dead/walking-dead-episode-4.jpg'),
+    video_url: 'z5lQQZ7i15A',
+    episode_number: 4
+  }),
+  Episode.create!({
+    title: 'Wildfire',
+    synopsis: 'Rick leads the group to the CDC after the attack. Jim must make a terrible life and death decision.',
+    serie_id: all_series[0].id,
+    image: File.open('app/assets/images/series/walking_dead/walking-dead-episode-5.jpg'),
+    video_url: 'DJb7tK_VaaE',
+    episode_number: 5
+  }),
+  Episode.create!({
+    title: 'TS-19',
+    synopsis: 'Driving back to camp, Morales warns Rick about Merle''s brother, Daryl, who will be irate about his brother''s abandonment. Glenn arrives at camp first, and Shane and Dale chastise him about drawing walkers with the alarm. Jim disconnects the alarm just as the cube van approaches.',
+    serie_id: all_series[0].id,
+    image: File.open('app/assets/images/series/walking_dead/walking-dead-episode-6.jpg'),
+    video_url: 'cDFk39WJxCw',
+    episode_number: 6
   }),
 
+#Breaking Bad
   Episode.create!({
     title: 'Pilot',
     synopsis: 'Walter White, a 50-year-old chemistry teacher, secretly begins making crystallized methamphetamine to support his family after learning that he has terminal lung cancer',
     serie_id: all_series[1].id,
     image: File.open('app/assets/images/series/breaking_bad/breaking-bad-episode-1.jpeg'),
-    video_url: 'asdfawe',
+    video_url: 'HhesaQXLuRY',
     episode_number: 1
   }),
 
@@ -155,7 +207,34 @@ all_episodes = [
     synopsis: 'Walt and Jesse try to dispose of the two bodies in the RV, which becomes increasingly complicated when one of them, Krazy-8, wakes up.',
     serie_id: all_series[1].id,
     image: File.open('app/assets/images/series/breaking_bad/breaking-bad-episode-2.jpeg'),
-    video_url: 'feqe',
+    video_url: 'T-E8rbHLSW8',
     episode_number: 2
-  })
+  }),
+
+  Episode.create!({
+    title: 'Cat''s In the Bag',
+    synopsis: 'Walt and Jesse try to dispose of the two bodies in the RV, which becomes increasingly complicated when one of them, Krazy-8, wakes up.',
+    serie_id: all_series[1].id,
+    image: File.open('app/assets/images/series/breaking_bad/breaking-bad-episode-2.jpeg'),
+    video_url: 'T-E8rbHLSW8',
+    episode_number: 3
+  }),
+
+  Episode.create!({
+    title: 'Cat''s In the Bag',
+    synopsis: 'Walt and Jesse try to dispose of the two bodies in the RV, which becomes increasingly complicated when one of them, Krazy-8, wakes up.',
+    serie_id: all_series[1].id,
+    image: File.open('app/assets/images/series/breaking_bad/breaking-bad-episode-2.jpeg'),
+    video_url: 'T-E8rbHLSW8',
+    episode_number: 4
+  }),
+
+  Episode.create!({
+    title: 'Cat''s In the Bag',
+    synopsis: 'Walt and Jesse try to dispose of the two bodies in the RV, which becomes increasingly complicated when one of them, Krazy-8, wakes up.',
+    serie_id: all_series[1].id,
+    image: File.open('app/assets/images/series/breaking_bad/breaking-bad-episode-2.jpeg'),
+    video_url: 'T-E8rbHLSW8',
+    episode_number: 5
+  }),
 ]

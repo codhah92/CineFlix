@@ -10,7 +10,7 @@ class SerieIndexItem extends React.Component {
     super(props);
     this.state = {
       modalIsOpen: false,
-      rating: props.serie.avg_rating,
+      rating: parseFloat(props.serie.avg_rating.avg),
       currentVideoId: ""
       // props.serie.episodes[0].video_url
     };
@@ -19,9 +19,15 @@ class SerieIndexItem extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.changeCurrentVideoId = this.changeCurrentVideoId.bind(this);
+    this.onStarClick = this.onStarClick.bind(this);
   }
 
   onStarClick(nextValue, prevValue, name) {
+    if (!!this.props.serie.review) {
+      this.props.updateRating(this.props.serie.review.id, nextValue);
+    } else {
+      this.props.createRating({ rating: nextValue, serie_id: this.props.serie.id});
+    }
     this.setState({ rating: nextValue });
   }
 
@@ -69,6 +75,27 @@ class SerieIndexItem extends React.Component {
   }
 
   render () {
+    let starRatingComponent;
+      if (this.props.serie.review) {
+        starRatingComponent = (<StarRatingComponent
+            name='rating'
+            className='rating'
+            starCount={5}
+            value={this.props.serie.review.rating}
+            color='Gold'
+            onStarClick={this.onStarClick.bind(this)} />
+        );
+      } else {
+        starRatingComponent = (
+          <StarRatingComponent
+            name='rating'
+            className='rating'
+            starCount={5}
+            value={this.state.rating}
+            color='Red'
+            onStarClick={this.onStarClick.bind(this)} />
+        );
+      }
     const customStyles = {
       overlay : {
         position          : 'fixed',
@@ -121,19 +148,13 @@ class SerieIndexItem extends React.Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-
             <section className="video-player">
               <VideoPlayer videoId={this.state.currentVideoId}/>
             </section>
           <div className="top-modal group">
             <section className="description-info group">
               <p className="serie-title">{this.props.serie.title}</p>
-              <StarRatingComponent
-                name='rating'
-                className='rating'
-                starCount={5}
-                value={this.state.rating}
-                onStarClick={this.onStarClick.bind(this)} />
+              <p className="rating">{ starRatingComponent }</p>
               <p className="serie-year">{this.props.serie.year}</p>
               <p className="serie-description">
                 {this.props.serie.description}

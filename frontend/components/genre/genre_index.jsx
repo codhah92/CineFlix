@@ -19,7 +19,7 @@ class GenreIndex extends React.Component {
     const favorites = (
       [<ul className="genre-carousel-row group">
         <li className="genre-title">My List</li>
-        <li className="serie-index-item">
+        <li className="serie-index-item group">
           <GenreIndexItem
             genre={ this.props.favorites }
             addSerieToMyList={ this.props.createMyListItem }
@@ -32,7 +32,7 @@ class GenreIndex extends React.Component {
       return (
         <ul key={genre.id} className="genre-carousel-row group">
           <li className="genre-title">{genre.name}</li>
-          <li className="serie-index-item">
+          <li className="serie-index-item group">
             <GenreIndexItem
               genre={genre}
               addSerieToMyList={this.props.createMyListItem}

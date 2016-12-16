@@ -12,6 +12,9 @@
 .episode-image {
   float: left;
   display: block;
+  height: 200px;
+  width: 300px;
+  overflow: hidden;
 }
 
 .episode-image:hover {

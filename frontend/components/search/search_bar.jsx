@@ -1,16 +1,18 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       queryString: "",
       searchClicked: false
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.clickedSearchBar = this.clickedSearchBar.bind(this);
     this.unclickedSearchBar = this.unclickedSearchBar.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
   }
 
   handleChange(e) {
@@ -18,10 +20,10 @@ class SearchBar extends React.Component {
     if (this.state.queryString.length === ""){
       this.props.router.push('/browse');
     } else {
-      this.props.router.push('/search');
+      this.props.router.push(`/search`);
     }
     this.setState({ queryString: e.currentTarget.value});
-    this.props.searchTitles(this.state.queryString);
+    this.props.searchTitles(this.props.searchedTitles);
   }
 
   clickedSearchBar() {
@@ -46,7 +48,7 @@ class SearchBar extends React.Component {
             className='search-form-clicked'
             type='text'
             onChange={this.handleChange}
-            value={this.state.queryString}
+            value={this.props.queryString}
             onBlur={ this.unclickedSearchBar}
             placeholder='Titles, genres'>
           </input>

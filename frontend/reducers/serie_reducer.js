@@ -1,5 +1,6 @@
 import { RECEIVE_SERIE } from '../actions/serie_actions';
 import { REMOVE_FAVORITE_SERIE, ADD_FAVORITE_SERIE } from '../actions/favorite_actions';
+import { UPDATE_RATING, CREATE_RATING, RECEIVE_AVG_RATING } from '../actions/review_actions';
 import merge from 'lodash/merge';
 
 const SeriesReducer = (state = {}, action) => {
