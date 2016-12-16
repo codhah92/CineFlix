@@ -20,10 +20,10 @@ class SearchBar extends React.Component {
     if (this.state.queryString.length === ""){
       this.props.router.push('/browse');
     } else {
-      this.props.router.push(`/search`);
+      this.props.router.push('/search');
     }
     this.setState({ queryString: e.currentTarget.value});
-    this.props.searchTitles(this.props.searchedTitles);
+    this.props.searchTitles(this.state.queryString);
   }
 
   clickedSearchBar() {
@@ -48,7 +48,7 @@ class SearchBar extends React.Component {
             className='search-form-clicked'
             type='text'
             onChange={this.handleChange}
-            value={this.props.queryString}
+            value={this.state.queryString}
             onBlur={ this.unclickedSearchBar}
             placeholder='Titles, genres'>
           </input>

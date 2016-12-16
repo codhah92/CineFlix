@@ -3,7 +3,7 @@ import { signout } from '../../actions/session_actions';
 import Dashboard from './dashboard';
 
 const mapStateToProps = (state, ownProps) => ({
-  currentUser: state.session.currentUser,
+  currentUser: state.session.currentUser
 });
 
 

@@ -13,10 +13,11 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({displayOpacity: true })
+    this.setState({displayOpacity: true });
   }
 
   render () {
+    debugger
     const searchIndexItems = this.props.searchedTitles.map((title) => {
       return (
         <ul className="search-carousel group">
