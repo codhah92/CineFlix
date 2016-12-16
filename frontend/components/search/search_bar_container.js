@@ -1,17 +1,17 @@
 import SearchBar from './search_bar';
 import { connect } from 'react-redux';
-import { searchTitles, searchGenres } from '../../actions/search_actions';
+import { searchTitles } from '../../actions/search_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    searchedTitles: state.search.titles,
     router: ownProps.router
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  searchTitles: (queryString) => dispatch(searchTitles(queryString)),
-  searchGenres: (queryString) => dispatch(searchGenres(queryString))
+  searchTitles: (queryString) => dispatch(searchTitles(queryString))
 });
 
 export default connect(

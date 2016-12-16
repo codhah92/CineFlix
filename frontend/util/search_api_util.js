@@ -4,10 +4,3 @@ export const searchTitles = (queryString) => {
     url: `api/search?query=${queryString}`
   });
 };
-
-export const searchGenres = (queryString) => {
-  return $.ajax({
-    method: 'GET',
-    url: `api/genres/search?query=${queryString}`
-  });
-}; 

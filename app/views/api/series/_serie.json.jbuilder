@@ -5,4 +5,3 @@ end
 json.image_url asset_path(serie.image.url(:medium))
 json.avg_rating serie.get_avg_rating
 json.review Review.find_by(user: current_user, serie: serie)
-json.genres serie.genres

@@ -10,6 +10,5 @@ Rails.application.routes.draw do
     resources :favorites, only: [:index, :create, :destroy]
     resources :reviews, only: [:create, :update, :destroy]
     get 'search/' => 'series#search', as: :search_series
-    get 'genres/search/' => 'genres#search', as: :search_genres
   end
 end
