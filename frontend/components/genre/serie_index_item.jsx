@@ -11,8 +11,7 @@ class SerieIndexItem extends React.Component {
     this.state = {
       modalIsOpen: false,
       rating: parseFloat(props.serie.avg_rating.avg),
-      currentVideoId: ""
-      // props.serie.episodes[0].video_url
+      currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
     };
 
     this.handleMyListClick = this.handleMyListClick.bind(this);
@@ -40,6 +39,7 @@ class SerieIndexItem extends React.Component {
   }
 
   changeCurrentVideoId(id) {
+    debugger
     this.setState({ currentVideoId: id});
   }
 
