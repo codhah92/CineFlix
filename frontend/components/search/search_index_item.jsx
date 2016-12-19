@@ -96,6 +96,18 @@ class SearchIndexItem extends React.Component {
     };
 
     const episodeIndexItems = this.props.title.episodes.map((episode, id) => {
+      if (episode.video_url === this.state.currentVideoId) {
+        return (<div key={episode.id} className="episode-group group">
+          <EpisodeIndexItem
+            episode={episode}
+            changeIt={this.changeCurrentVideoId}/>
+          <p className="current-episode-title">
+            ▶ {episode.title}
+          </p>
+          <p className="episode-synopsis">{episode.synopsis}</p>
+        </div>
+        );
+      } else {
       return (
         <div key={episode.id} className="episode-group group">
           <EpisodeIndexItem
@@ -107,7 +119,7 @@ class SearchIndexItem extends React.Component {
           <p className="episode-synopsis">{episode.synopsis}</p>
         </div>
       );
-    });
+    }});
 
     return (
       <div className="serie-group group">

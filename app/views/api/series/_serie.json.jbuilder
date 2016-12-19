@@ -1,4 +1,4 @@
-json.extract! serie, :id, :title, :year, :description, :movie, :avg_rating
+json.extract! serie, :id, :title, :year, :description, :movie, :avg_rating, :genres
 json.episodes serie.episodes do |episode|
   json.partial! 'api/episodes/episode.json.jbuilder', episode: episode
 end

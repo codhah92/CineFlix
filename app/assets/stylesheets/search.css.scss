@@ -36,9 +36,11 @@
 }
 
 .search-results-container {
-  height: 800px;
+  height: auto;
+  overflow: auto;
   opacity: 0;
   transition: opacity 1.3s;
+  min-height: 800px;
 }
 
 .display-search-results {
@@ -58,6 +60,7 @@
 .search-results-container {
   margin-left: 20px;
 }
+
 
 .search-carousel {
   float: left;

@@ -149,6 +149,18 @@ class SerieIndexItem extends React.Component {
       },
     };
     const episodeIndexItems = this.props.serie.episodes.map((episode, id) => {
+      if (episode.video_url === this.state.currentVideoId) {
+        return (<div key={episode.id} className="episode-group group">
+          <EpisodeIndexItem
+            episode={episode}
+            changeIt={this.changeCurrentVideoId}/>
+          <p className="current-episode-title">
+            ▶ {episode.title}
+          </p>
+          <p className="episode-synopsis">{episode.synopsis}</p>
+        </div>
+        );
+      } else {
       return (
         <div key={episode.id} className="episode-group group">
           <EpisodeIndexItem
@@ -159,6 +171,12 @@ class SerieIndexItem extends React.Component {
           </p>
           <p className="episode-synopsis">{episode.synopsis}</p>
         </div>
+      );
+    }});
+
+    const genres = this.props.serie.genres.map((genre) => {
+      return (
+        <li key={genre.id} className="series-genre">{genre.name}</li>
       );
     });
 
@@ -188,7 +206,7 @@ class SerieIndexItem extends React.Component {
             </section>
             <section className="other-details">
               <p>{this.renderMyListToggle()}</p>
-              <p className="serie-genres">Genres: {this.props.serie.genres}</p>
+              <ul className="serie-genres">Genres: {genres}</ul>
             </section>
           </div>
           <section className="episode-index-items group">

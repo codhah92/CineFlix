@@ -13,6 +13,21 @@ User.create!({
   password: 'guestpass'
 })
 
+all_users = [];
+
+20.times do
+  email = Faker::Internet.free_email
+  username = Faker::Internet.user_name
+  email = Faker::Internet.free_email while (User.find_by(email: email))
+  user = User.create!({
+    email: email,
+    username: username,
+    password: '123456'
+  })
+
+  all_users.push(user)
+end
+
 Genre.destroy_all
 
 all_genres = [
@@ -31,17 +46,8 @@ all_genres = [
   #6
   Genre.create!(name: "Documentaries"),
   #7
-  Genre.create!(name: "Coding"),
+  Genre.create!(name: "Coding")
   #8
-  Genre.create!(name: "Horror Movies"),
-  #9
-  Genre.create!(name: "International Movies"),
-  #10
-  Genre.create!(name: "Music Videos"),
-  #11
-  Genre.create!(name: "TV Dramas"),
-  #12
-  Genre.create!(name: "Food Adventures")
 ]
 
 Serie.destroy_all
@@ -67,7 +73,7 @@ all_series = [
     title: 'Conan O''Brien',
     description: 'A late-night comedy show hosted by writer, comedian and performer Conan O''Brien',
     year: 2002,
-    image: File.open('app/assets/images/series/conan-o-brien.jpg'),
+    image: File.open('app/assets/images/series/conan/conan-o-brien.jpg'),
     genres: [all_genres[2]]
   }),
 #3 SuperGirl
@@ -75,7 +81,7 @@ all_series = [
     title: 'SuperGirl',
     description: 'The adventures of Superman''s cousin in her own superhero career.',
     year: 2015,
-    image: File.open('app/assets/images/series/supergirl.png'),
+    image: File.open('app/assets/images/series/supergirl/supergirl.png'),
     genres: [all_genres[3], all_genres[1]]
   }),
 #4 NBA Knicks Highlights
@@ -83,7 +89,7 @@ all_series = [
     title: 'NBA Knicks Highlights',
     description: 'Watch the Knicks as they wheel and deal through the 2016-17 season!',
     year: 2016,
-    image: File.open('app/assets/images/series/knicks.jpg'),
+    image: File.open('app/assets/images/series/knicks/knicks.jpg'),
     genres: [all_genres[5]]
   }),
 #5 Ruby
@@ -132,7 +138,7 @@ all_series = [
     description: 'The one-hour drama series Westworld is a dark odyssey about the dawn of artificial consciousness and the evolution of sin. Set at the intersection of the near future and the reimagined past, it explores a world in which every human appetite, no matter how noble or depraved, can be indulged.',
     year: 2016,
     image: File.open('app/assets/images/series/westworld/westworld-cover.jpg'),
-    genres: [all_genres[11]]
+    genres: [all_genres[0], all_genres[4]]
   }),
 #11 Criminal Minds
   Serie.create!({
@@ -326,6 +332,14 @@ all_series = [
     image: File.open('app/assets/images/series/rio/rio-cover.jpg'),
     genres: [all_genres[5]]
   }),
+# 35 Vice Documentaries
+  Serie.create!({
+    title: 'Vice Documentaries',
+    description: 'A documentary TV series created and hosted by Shane Smith of Vice magazine. Produced by Bill Maher, it uses CNN journalist Fareed Zakaria as a consultant, and covers topics using an immersionist style of documentary filmmaking.',
+    year: 2013,
+    image: File.open('app/assets/images/series/vice/vice-cover.jpg'),
+    genres: [all_genres[6]]
+  }),
 ]
 
 Episode.destroy_all
@@ -423,7 +437,7 @@ all_episodes = [
     synopsis: 'Dolores Abernathy, a blood-spattered young host, sits naked in a diagnostic room. A voice interviews her, and Dolores flatly describes her world as she wakes up on her family’s ranch and begins her day.',
     serie_id: all_series[10].id,
     image: File.open('app/assets/images/series/westworld/westworld-episode-1.jpg'),
-    video_url: 'AZBDXqDBo_c&index=5&list=PLJl93FMVnn7Abyc2G0hq3W175369JuJO6',
+    video_url: 'AZBDXqDBo_c',
     episode_number: 1
   }),
 
@@ -432,7 +446,7 @@ all_episodes = [
     synopsis: 'Dolores is roused in the middle of the night by a strange voice. “Do you remember?” the voice asks, prompting Dolores to walk outside.',
     serie_id: all_series[10].id,
     image: File.open('app/assets/images/series/westworld/westworld-episode-2.jpg'),
-    video_url: 'pXKjjg4R-Is&list=PLJl93FMVnn7Abyc2G0hq3W175369JuJO6&index=8',
+    video_url: 'pXKjjg4R-Is',
     episode_number: 2
   }),
 
@@ -441,7 +455,7 @@ all_episodes = [
     synopsis: 'Bernard begins a diagnostic with Dolores, who assures him she has not told anyone of their conversations. He brings her a gift, Alice in Wonderland, asking her if the passages in the book remind her of anything. “But if I’m not the same,” she reads, “the next question is, who in the world am I?”',
     serie_id: all_series[10].id,
     image: File.open('app/assets/images/series/westworld/westworld-episode-3.jpg'),
-    video_url: '52ic4_2lkWk&index=9&list=PLJl93FMVnn7Abyc2G0hq3W175369JuJO6',
+    video_url: '52ic4_2lkWk',
     episode_number: 3
   }),
 
@@ -450,7 +464,7 @@ all_episodes = [
     synopsis: 'In a diagnostic session, Bernard asks Dolores why she ran from the ranch. She explains that even though her family is gone, she holds on to the pain of their loss. “I feel spaces opening up inside me,” she continues, “like a building with rooms I’ve never explored.” Bernard tells Dolores she can be free if she can find the center of the maze. Dolores wakes up at William and Logan’s campsite, gun in her hand.',
     serie_id: all_series[10].id,
     image: File.open('app/assets/images/series/westworld/westworld-episode-4.jpg'),
-    video_url: 'b6NpfamnhYU&list=PLJl93FMVnn7Abyc2G0hq3W175369JuJO6&index=10',
+    video_url: 'b6NpfamnhYU',
     episode_number: 4
   }),
 
@@ -459,8 +473,292 @@ all_episodes = [
     synopsis: 'Dr. Ford tells Old Bill the story of his childhood greyhound; when it was let off-leash one day at the park, it killed a cat, mistaking it for the rabbit plush used in training races. “That dog had spent its whole life trying to catch that thing,” Ford explains. “Now it had no idea what to do.”',
     serie_id: all_series[10].id,
     image: File.open('app/assets/images/series/westworld/westworld-episode-5.jpg'),
-    video_url: 'qPCwi92Jofw&index=12&list=PLJl93FMVnn7Abyc2G0hq3W175369JuJO6',
+    video_url: 'qPCwi92Jofw',
     episode_number: 5
-  })
+  }),
+# Conan
+  Episode.create!({
+    title: 'Clueless Gamer: "Battlefield 1" With Terry Crews',
+    synopsis: 'The WWI first person shooter game is so intense, Conan and Terry need some fuzzy bunnies to help calm their nerves.',
+    serie_id: all_series[2].id,
+    image: File.open('app/assets/images/series/conan/conan-terry.jpg'),
+    video_url: 'jLhjsPjR-xk',
+    episode_number: 1
+  }),
+# Supergirl
+  Episode.create!({
+    title: 'The Adventures of Supergirl',
+    synopsis: 'The premiere picks up right where the finale left off: Kara and Martian Manhunter fly to the crash site and find Mon-El (Chris Wood) peacefully asleep in the pod.',
+    serie_id: all_series[3].id,
+    image: File.open('app/assets/images/series/supergirl/supergirl-episode-1.jpg'),
+    video_url: '7vGuQ17HkTc',
+    episode_number: 1
+  }),
+# Knicks Highlights
+  Episode.create!({
+    title: 'New York Knicks vs. LA Lakers',
+    synopsis: 'The New York Knicks take on the LA Lakers at the Staples Center',
+    serie_id: all_series[4].id,
+    image: File.open('app/assets/images/series/knicks/knicks-episode-1.jpg'),
+    video_url: 'xxnSoXJHjqA',
+    episode_number: 1
+  }),
+# Ruby
+  Episode.create!({
+    title: 'Ruby - An Overview',
+    synopsis: 'A complete tutorial on Ruby.',
+    serie_id: all_series[5].id,
+    image: File.open('app/assets/images/series/ruby.jpg'),
+    video_url: 'Dji9ALCgfpM',
+    episode_number: 1
+  }),
+# Javascript
+  Episode.create!({
+    title: 'Javascript - An Overview',
+    synopsis: 'A complete tutorial on Javascript.',
+    serie_id: all_series[6].id,
+    image: File.open('app/assets/images/series/javascript.png'),
+    video_url: 'fju9ii8YsGs',
+    episode_number: 1
+  }),
+# React
+  Episode.create!({
+    title: 'React - Introduction & Workspace Setup',
+    synopsis: 'An introduction to React and a tutorial on setting it up!',
+    serie_id: all_series[7].id,
+    image: File.open('app/assets/images/series/react.png'),
+    video_url: 'MhkGQAoc7bc',
+    episode_number: 1
+  }),
+# Redux
+  Episode.create!({
+    title: 'Redux - How Redux Works',
+    synopsis: 'An introduction to Redux and why it is useful.',
+    serie_id: all_series[8].id,
+    image: File.open('app/assets/images/series/redux.png'),
+    video_url: '1w-oQ-i1XB8',
+    episode_number: 1
+  }),
+# Rails
+  Episode.create!({
+    title: 'Ruby on Rails - Part One',
+    synopsis: 'Part one of a Ruby On Rails series',
+    serie_id: all_series[9].id,
+    image: File.open('app/assets/images/series/rails.jpg'),
+    video_url: 'GY7Ps8fqGdc',
+    episode_number: 1
+  }),
+# Criminal Minds
+  Episode.create!({
+    title: 'The Crimson King',
+    synopsis: 'Agent Luke Alvez (Adam Rodriguez) joins the BAU team, which is tasked with capturing a killer who escaped prison with 13 other convicts at the end of last season.',
+    serie_id: all_series[11].id,
+    image: File.open('app/assets/images/series/criminal_minds/criminal-minds-episode-1.png'),
+    video_url: 'XGTpYJ6jswQ',
+    episode_number: 1
+  }),
+# Dexter
+  Episode.create!({
+    title: 'Pilot',
+    synopsis: 'By day he is a blood spatter analyst who works for the Homicide Department of the Miami Metro Police.',
+    serie_id: all_series[12].id,
+    image: File.open('app/assets/images/series/dexter/dexter-episode-1.jpg'),
+    video_url: 'x9aGJeL_BRc',
+    episode_number: 1
+  }),
+# Sherlock
+  Episode.create!({
+    title: 'A Study in Pink',
+    synopsis: 'War vet Dr. John Watson returns to London in need of a place to stay. He meets Sherlock Holmes, a consulting detective, and the two soon find themselves digging into a string of serial "suicides."',
+    serie_id: all_series[13].id,
+    image: File.open('app/assets/images/series/sherlock/sherlock-episode-1.jpg'),
+    video_url: 'JP5Dr63TbSU',
+    episode_number: 1
+  }),
+# Homeland
+  Episode.create!({
+    title: 'Pilot',
+    synopsis: 'A CIA case officer (Claire Danes) becomes suspicious that a Marine Sergeant rescued from captivity has been turned into a sleeper agent by Al Qaeda. ',
+    serie_id: all_series[14].id,
+    image: File.open('app/assets/images/series/homeland/homeland-episode-1.jpg'),
+    video_url: 'N-1Jz8ZJjpA',
+    episode_number: 1
+  }),
+# American Crime
+  Episode.create!({
+    title: 'Episode One',
+    synopsis: 'Social injustice stirs up tensions in a California city after a shocking crime.',
+    serie_id: all_series[15].id,
+    image: File.open('app/assets/images/series/american_crime/american-crime-episode-1.jpg'),
+    video_url: 'Uu2P7ABRLRw',
+    episode_number: 1
+  }),
+# Kevin Hart
+  Episode.create!({
+    title: 'Let Me Explain',
+    synopsis: 'Kevin Hart Let Me Explain 2013 | Kevin Hart Stand Up Comedy Show',
+    serie_id: all_series[16].id,
+    image: File.open('app/assets/images/series/kevin_hart/kevin-hart-episode-1.jpg'),
+    video_url: 'kB7Pg_D89I0',
+    episode_number: 1
+  }),
+# Jay Pharoah
+  Episode.create!({
+    title: 'Jay Pharoah Impersonates Jay Z, Kendrick Lamar, Will Smith + More',
+    synopsis: 'Jay Pharoah impersonates celebrities Jay-Z, Kendrick Lamar, Will Smith and others on Radio Malcolm.',
+    serie_id: all_series[17].id,
+    image: File.open('app/assets/images/series/jay_pharoah/jay-pharoah-episode-1.jpg'),
+    video_url: '-BrWqNxXj40',
+    episode_number: 1
+  }),
+# Jimmy Fallon
+  Episode.create!({
+    title: 'Singing Whisper Challenge with Emma Stone',
+    synopsis: 'Jimmy and Emma Stone take turns guessing random song titles and lyrics while wearing noise-canceling headphones.',
+    serie_id: all_series[18].id,
+    image: File.open('app/assets/images/series/the_tonight_show/the-tonight-show-episode-1.jpg'),
+    video_url: 'zzWWmG3CUWc',
+    episode_number: 1
+  }),
+# John Oliver
+  Episode.create!({
+    title: 'Pumpkin Spice (Web Exclusive): Last Week Tonight with John Oliver (HBO)',
+    synopsis: 'John Oliver investigates pumpkin spice lattes. Well, he doesn''t really investigate. He says things about it, though!',
+    serie_id: all_series[19].id,
+    image: File.open('app/assets/images/series/john_oliver/john-oliver-episode-1.jpg'),
+    video_url: 'DeQqe0oj5Ls',
+    episode_number: 1
+  }),
+# SNL
+  Episode.create!({
+    title: 'A Thanksgiving Miracle - SNL',
+    synopsis: 'There''s only one thing that can keep a family (Beck Bennett, Jay Pharoah, Cecily Strong, Aidy Bryant, Matthew McConaughey, Kate McKinnon, Vanessa Bayer) from fighting at Thanksgiving: Adele.',
+    serie_id: all_series[20].id,
+    image: File.open('app/assets/images/series/snl/snl-episode-1.jpg'),
+    video_url: 'e2zyjbH9zzA',
+    episode_number: 1
+  }),
+# The Daily Show
+  Episode.create!({
+    title: 'The Daily Show with Trevor Noah - Ben Carson Blames the Victims',
+    synopsis: 'Presidential hopeful Ben Carson doubles down on condemnatory remarks he made about victims of a mass shooting at an Oregon community college.',
+    serie_id: all_series[21].id,
+    image: File.open('app/assets/images/series/the_daily_show/the-daily-show-episode-1.jpg'),
+    video_url: 'oe06jLcpjYI',
+    episode_number: 1
+  }),
+# Node.js
+  Episode.create!({
+    title: 'What is Node.js Exactly? - a beginners introduction to Nodejs',
+    synopsis: 'What exactly is node.js? Is it a command-line tool, a language, the same thing as Ruby on Rails, a cure for cancer?',
+    serie_id: all_series[22].id,
+    image: File.open('app/assets/images/series/node/node-cover.png'),
+    video_url: 'pU9Q6oiQNd0',
+    episode_number: 1
+  }),
+# 24
+  Episode.create!({
+    title: 'Midnight - 1:00 A.M.',
+    synopsis: 'Jack Bauer comes out of hiding in London to head off a massive terrorist attack ',
+    serie_id: all_series[23].id,
+    image: File.open('app/assets/images/series/24/24-episode-1.jpg'),
+    video_url: 'Do_LT2xbFXo',
+    episode_number: 1
+  }),
+# Stranger Things
+  Episode.create!({
+    title: 'Chapter One: The Vanishing of Will Byers',
+    synopsis: 'In a small Indiana town, the disappearance of a young boy sparks a police investigation.',
+    serie_id: all_series[24].id,
+    image: File.open('app/assets/images/series/stranger_things/stranger-things-episode-1.jpg'),
+    video_url: '5kRo6Yg091o',
+    episode_number: 1
+  }),
+# Arrow
+  Episode.create!({
+    title: 'Pilot',
+    synopsis: 'Billionaire playboy Oliver Queen is discovered on a remote Pacific island, having been shipwrecked for the previous five years. Oliver is welcomed back home to Starling City by his mother Moira, stepfather Walter Steele, younger sister Thea, and best friend Tommy Merlyn. They can sense that Oliver has changed, and try to question him about his time on the island after viewing the numerous scars that have riddled his body.',
+    serie_id: all_series[25].id,
+    image: File.open('app/assets/images/series/arrow/arrow-episode-1.jpg'),
+    video_url: 'ofzPONG8hDU',
+    episode_number: 1
+  }),
+# Prison Break
+  Episode.create!({
+    title: 'Pilot',
+    synopsis: 'Burrows'' brother Michael Scofield, a structural engineer, plans to get himself incarcerated so he can save his brother from his death sentence, by using his new body tattoo.',
+    serie_id: all_series[26].id,
+    image: File.open('app/assets/images/series/prison_break/prison-break-episode-1.jpg'),
+    video_url: 'AL9zLctDJaU',
+    episode_number: 1
+  }),
+# Supernatural
+  Episode.create!({
+    title: 'Pilot',
+    synopsis: 'Sam and Dean Winchester were trained by their father to hunt the creatures of the supernatural. Now, their father has mysteriously disappeared while hunting the demon that killed their mother, 22 years ago.',
+    serie_id: all_series[27].id,
+    image: File.open('app/assets/images/series/supernatural/supernatural-episode-1.jpg'),
+    video_url: '8AyCXsVrLhY',
+    episode_number: 1
+  }),
+# Game of Thrones
+  Episode.create!({
+    title: 'Winter Is Coming',
+    synopsis: 'Jon Arryn, the Hand of the King, is dead. King Robert Baratheon plans to ask his oldest friend, Eddard Stark, to take Jon''s place. Across the sea, Viserys Targaryen plans to wed his sister to a nomadic warlord in exchange for an army.',
+    serie_id: all_series[28].id,
+    image: File.open('app/assets/images/series/game_of_thrones/game-of-thrones-episode-1.jpg'),
+    video_url: 'iGp_N3Ir7Do&t=7s',
+    episode_number: 1
+  }),
+# Lost
+  Episode.create!({
+    title: 'Pilot',
+    synopsis: 'Forty-eight survivors of an airline flight originating from Australia, bound for the U.S., which crash-lands onto an unknown island 1000 miles off course, struggle to figure out a way to survive while trying to find a way to be rescued.',
+    serie_id: all_series[29].id,
+    image: File.open('app/assets/images/series/lost/lost-episode-1.png'),
+    video_url: 'KTu8iDynwNc',
+    episode_number: 1
+  }),
+# Shaqtin A Fool
+  Episode.create!({
+    title: 'Shaqtin'' A Fool | December 8, 2016 | 2016-17 NBA Season',
+    synopsis: 'Shaqtin'' A Fool highlights from December 8th, 2016.',
+    serie_id: all_series[30].id,
+    image: File.open('app/assets/images/series/shaqtin/shaqtin-episode-1.jpg'),
+    video_url: 'vJMIGI7FZtY',
+    episode_number: 1
+  }),
+# Premier League Highlights
+  Episode.create!({
+    title: 'Arsenal vs Everton 1-2 Highlights',
+    synopsis: 'Arsenal vs. Everton on December 13, 2016',
+    serie_id: all_series[31].id,
+    image: File.open('app/assets/images/series/premier_league/premier-league-episode-1.jpg'),
+    video_url: 'PHV98RrVJ1s',
+    episode_number: 1
+  }),
+
+
+
+
+
+
+
 
 ]
+
+reviews = [];
+
+200.times do
+  serie_id = all_series[rand(34)].id
+  user_id = all_users[rand(20)].id
+  rating = rand(1..5)
+
+  review = Review.new({
+    serie_id: serie_id,
+    user_id: user_id,
+    rating: rating
+  })
+
+  reviews.push(review) if review.save
+end
