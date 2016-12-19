@@ -12,9 +12,9 @@ with Javascript, React.js and a Redux architectural framework.
 
 ## Videos
 Videos are retrieved from a YouTube API. The react-youtube library is used
-to play videos of each 'episode' through its containing 'video_url'.
-Episodes are listed as an array inside of a 'serie' object and 'serie' objects
-are held within a 'series' array within each 'genre'. When a user logs in
+to play videos of each 'episode' through its 'video_url'.Episodes are listed
+as an array inside of a 'serie' object and 'serie' objects are held within a
+'series' array within each 'genre'. When a user logs in
 to CineFlix, the user is directed to the /browse page of his or her personal
 video listing and is able to view every genre that holds 'serie' objects. The user
 can then access a series' episodes by clicking into any of these 'serie' objects.
@@ -46,6 +46,18 @@ The image carousel is displayed for each genre on the '/browse' page whenever th
 row contains 6 or more series. The scroll was created using a react library called
 react-slick. The scroll slides 6 series at a time until it reaches the last few series
 within the genre.
+
 ## Search
+A search bar is available for users to dynamically search for the titles of series.
+When a user begins to input a title in the search bar of the browse page, the page will
+redirect to a Search page, through which the user can then begin to find the title of their choice.
+The search page provides users with access to all videos that they'd like to watch and
+also allows users to add videos to their 'My List'.
 
 ## Future Directions for the Project
+Additional features to implement for Cineflix include:
+- [ ] Continue Watching for series that user is currently watching
+- [ ] Notifications for new series
+- [ ] OAuth
+- [ ] Infinite Scroll
+- [ ] Autoplaying episodes immediately after the end of a previous episode in a series
