@@ -11,8 +11,7 @@ class SearchIndexItem extends React.Component {
     this.state = {
       modalIsOpen: false,
       rating: props.title.avg_rating,
-      currentVideoId: ""
-      // props.serie.episodes[0].video_url
+      currentVideoId: props.title.episodes[0] ? props.title.episodes[0].video_url : ""
     };
 
     this.handleMyListClick = this.handleMyListClick.bind(this);

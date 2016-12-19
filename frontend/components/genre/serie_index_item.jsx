@@ -8,11 +8,24 @@ import VideoPlayer from '../video_player/video_player';
 class SerieIndexItem extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {
-      modalIsOpen: false,
-      rating: parseFloat(props.serie.avg_rating.avg),
-      currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
-    };
+    const currentUserReview = this.props.serie.reviews.find((review) => {
+      if (review.user_id === this.props.currentUser.id) {
+        return review;
+      }
+    });
+    if (currentUserReview) {
+      this.state = {
+        modalIsOpen: false,
+        rating: currentUserReview.rating,
+        currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
+      };
+    } else {
+      this.state = {
+        modalIsOpen: false,
+        rating: props.serie.avg_rating[0] ? parseFloat(props.serie.avg_rating[0].avg) : 0,
+        currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
+      };
+    }
 
     this.handleMyListClick = this.handleMyListClick.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -22,8 +35,14 @@ class SerieIndexItem extends React.Component {
   }
 
   onStarClick(nextValue, prevValue, name) {
-    if (!!this.props.serie.review) {
-      this.props.updateRating(this.props.serie.review.id, nextValue);
+    let currentUserId = this.props.currentUser.id;
+    const currentUserReview = this.props.serie.reviews.find((review) => {
+      if (review.user_id === this.props.currentUser.id) {
+        return review;
+      }
+    });
+    if (!!currentUserReview) {
+      this.props.updateRating(currentUserReview.id, nextValue);
     } else {
       this.props.createRating({ rating: nextValue, serie_id: this.props.serie.id});
     }
@@ -39,7 +58,6 @@ class SerieIndexItem extends React.Component {
   }
 
   changeCurrentVideoId(id) {
-    debugger
     this.setState({ currentVideoId: id});
   }
 
@@ -76,25 +94,33 @@ class SerieIndexItem extends React.Component {
 
   render () {
     let starRatingComponent;
-      if (this.props.serie.review) {
-        starRatingComponent = (<StarRatingComponent
-            name='rating'
-            className='rating'
-            starCount={5}
-            value={this.props.serie.review.rating}
-            color='Gold'
-            onStarClick={this.onStarClick.bind(this)} />
-        );
+      const allReviewedUserIds = this.props.serie.reviews.map((review) => {
+        return review.user_id;
+      });
+
+      if (this.props.currentUser === null){
+        return <div></div>;
       } else {
-        starRatingComponent = (
-          <StarRatingComponent
-            name='rating'
-            className='rating'
-            starCount={5}
-            value={this.state.rating}
-            color='Red'
-            onStarClick={this.onStarClick.bind(this)} />
-        );
+        if (allReviewedUserIds.includes(this.props.currentUser.id)) {
+          starRatingComponent = (<StarRatingComponent
+              name='rating'
+              className='rating'
+              starCount={5}
+              value={this.state.rating}
+              starColor='Gold'
+              onStarClick={this.onStarClick.bind(this)} />
+          );
+        } else {
+          starRatingComponent = (
+            <StarRatingComponent
+              name='rating'
+              className='rating'
+              starCount={5}
+              value={this.state.rating}
+              starColor='Red'
+              onStarClick={this.onStarClick.bind(this)} />
+          );
+        }
       }
     const customStyles = {
       overlay : {
