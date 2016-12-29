@@ -17,7 +17,7 @@ class GenreIndex extends React.Component {
 
   render() {
     const favorites = (
-      [<ul className="genre-carousel-row group">
+      [<ul key={0} className="genre-carousel-row group">
         <li className="genre-title">My List</li>
         <li className="serie-index-item group">
           <GenreIndexItem

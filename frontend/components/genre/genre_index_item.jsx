@@ -17,9 +17,8 @@ class GenreIndexItem extends React.Component {
       seriesContent = <label className='notFound'>No Series Found!</label>;
     } else if (this.props.genre.series.length < 6) {
       seriesContent = <div>{ this.props.genre.series.map((serie, i) => (
-        <div key={i}>
+        <div key={serie.id}>
           <SerieIndexItem
-            key={serie.id}
             className="serie-index-item-under-six group"
             serie={ serie }
             addSerieToMyList={ this.props.addSerieToMyList }
@@ -33,9 +32,8 @@ class GenreIndexItem extends React.Component {
     } else {
       seriesContent = <Slider {...settings}>
         { this.props.genre.series.map((serie, i) => (
-          <div key={i}>
+          <div key={serie.id}>
           <SerieIndexItem
-            key={serie.id}
             className="serie-index-items group"
             serie={ serie }
             addSerieToMyList={ this.props.addSerieToMyList }
