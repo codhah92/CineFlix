@@ -15,12 +15,14 @@ class SerieIndexItem extends React.Component {
     });
     if (currentUserReview) {
       this.state = {
+        episodesTab: true,
         modalIsOpen: false,
         rating: currentUserReview.rating,
         currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
       };
     } else {
       this.state = {
+        episodesTab: true,
         modalIsOpen: false,
         rating: props.serie.avg_rating[0] ? parseFloat(props.serie.avg_rating[0].avg) : 0,
         currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
@@ -180,6 +182,8 @@ class SerieIndexItem extends React.Component {
       );
     });
 
+    const bottomDetails = this.state.episodesTab ? episodeIndexItems : <div></div>;
+
     return (
       <div className="serie-group group">
         <img src={this.props.serie.image_url}
@@ -211,10 +215,14 @@ class SerieIndexItem extends React.Component {
           </div>
           <section className="episode-index-items group">
             <header className="tabs">
-              <label className="episodes-tab">Episodes</label>
-              <label className="details-tab">Details</label>
+              <label className="episodes-tab">Episodes
+                <span className="episodes-red-bar"></span>
+              </label>
+              <label className="details-tab">Details
+                <span className="details-red-bar hidden"></span>
+              </label>
             </header>
-            {episodeIndexItems}
+            {bottomDetails}
           </section>
         </Modal>
       </div>
