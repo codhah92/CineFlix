@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import Modal from 'react-modal';
+import DetailIndexItem from './detail_index_item';
 import EpisodeIndexItem from './episode_index_item';
 import StarRatingComponent from 'react-star-rating-component';
 import VideoPlayer from '../video_player/video_player';
@@ -34,6 +35,8 @@ class SerieIndexItem extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.changeCurrentVideoId = this.changeCurrentVideoId.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
+    this.activateDetailsTab = this.activateDetailsTab.bind(this);
+    this.activateEpisodesTab = this.activateEpisodesTab.bind(this);
   }
 
   onStarClick(nextValue, prevValue, name) {
@@ -94,6 +97,18 @@ class SerieIndexItem extends React.Component {
     );
   }
 
+  activateEpisodesTab() {
+    this.setState({ episodesTab: true });
+    $('.episodes-red-bar').removeClass('hidden');
+    $('.details-red-bar').addClass('hidden');
+  }
+
+  activateDetailsTab() {
+    this.setState({ episodesTab: false });
+    $('.details-red-bar').removeClass('hidden');
+    $('.episodes-red-bar').addClass('hidden');
+  }
+
   render () {
     let starRatingComponent;
       const allReviewedUserIds = this.props.serie.reviews.map((review) => {
@@ -150,6 +165,16 @@ class SerieIndexItem extends React.Component {
         margin                     : '0 auto'
       },
     };
+
+    const detailIndex = this.props.serie.reviews.map((review, id) => {
+      return (<div key={review.id} className="detail-group group">
+        <DetailIndexItem
+          review={review}
+        />
+      </div>
+      );
+    });
+
     const episodeIndexItems = this.props.serie.episodes.map((episode, id) => {
       if (episode.video_url === this.state.currentVideoId) {
         return (<div key={episode.id} className="episode-group group">
@@ -182,7 +207,7 @@ class SerieIndexItem extends React.Component {
       );
     });
 
-    const bottomDetails = this.state.episodesTab ? episodeIndexItems : <div></div>;
+    const bottomDetails = this.state.episodesTab ? episodeIndexItems : detailIndex;
 
     return (
       <div className="serie-group group">
@@ -215,10 +240,10 @@ class SerieIndexItem extends React.Component {
           </div>
           <section className="episode-index-items group">
             <header className="tabs">
-              <label className="episodes-tab">Episodes
+              <label className="episodes-tab" onClick={ this.activateEpisodesTab }>Episodes
                 <span className="episodes-red-bar"></span>
               </label>
-              <label className="details-tab">Details
+              <label className="details-tab" onClick={ this.activateDetailsTab }>Details
                 <span className="details-red-bar hidden"></span>
               </label>
             </header>
