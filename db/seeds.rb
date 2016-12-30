@@ -737,27 +737,80 @@ all_episodes = [
     video_url: 'PHV98RrVJ1s',
     episode_number: 1
   }),
-
-
-
-
-
-
-
-
 ]
 
 reviews = [];
+
+random_reviews = [
+  "Great movie!",
+  "I'm interested in this movie.",
+  "Why am I laughing so hard?",
+  "I remember the good old days...",
+  "Having a blast watching this while eating my cheetos.",
+  "Someday I'll be a superhero too.",
+  "LOL!",
+  "LMAO!",
+  "Dude... what am I watching?",
+  "Glad that I got through this without shedding a tear.",
+  "When the world ends, I'm going to make sure to hide in a bunker.",
+  "lovely~~~~ :)",
+  "nostalgia at its finest",
+  "this was definitely the main character's finest hour",
+  "dopest movie on the planet!",
+  "IT WAS LITTTTTT",
+  "good old times",
+  "When did this movie first come out?",
+  "stressed...",
+  "im 18 and i love cartoons - give me some of those saturday morning cartoons",
+  "I feel like a kid again.",
+  "giddy up horsey!",
+  "This needs a sequel ASAP",
+  "My mind is running with the rap lyrics from Tupac's Changes",
+  "HILARIOUS. OMG.",
+  "CineFlix is the greatest site in the nation",
+  "You guys at CineFlix better work harder... Netflix is catching up!",
+  "This stuff cracks me up",
+  "Lame brains",
+  "I am writing this without any thoughts going on in my head.",
+  "Actually, writing these reviews are making me quite nostalgic",
+  "Goodness, I laughed and my breath stinks.",
+  "Ballin on the streets every day. Go hard or go home.",
+  "I wish I worked harder when I was younger...",
+  "I wish I started programming at an earlier age...",
+  "Thank you so much for CINEFLIX!",
+  "I'm getting sleepy.",
+  "YAWN",
+  "My father always told me to believe in myself. Today, I do.",
+  "53 years old here and I cannot get over how beautiful movies have become. Oh joy.",
+  "WOOT",
+  "The ChainSmokers told me that we ain't never gettin older. I feel older everyday.",
+  "Buzzzzzzz lightyear please come in star command.",
+  "Duck duck goose was my favorite game back in the day.",
+  "When I grow up, I want to become like SuperGirl. NOT Superman.",
+  "I LOVE WENDYS MORE THAN MCDONALDS.",
+  "Some day I am going to meet Kobe and he will tell me that I am the best baller he has ever seen.",
+  "Do people even read these reviews?",
+  "Shake shack or In-N-Out? The great debate.",
+  "Hassan told me to write this.",
+  "My life is brilliant, my love is pure. I saw an angel of that I am definitely sure.",
+  "wake me up when 2017 ends.",
+  "I need a soda.",
+  "Life ain't easy sometimes, but we just gotta stay in line.",
+  "Okay. This movie was absolutely amazing. The cinematography reminds me of traditional East Asian movies from the 1970s.",
+  "What...",
+];
 
 200.times do
   serie_id = all_series[rand(34)].id
   user_id = all_users[rand(20)].id
   rating = rand(1..5)
+  body = random_reviews.sample
 
   review = Review.new({
     serie_id: serie_id,
     user_id: user_id,
-    rating: rating
+    rating: rating,
+    body: body
   })
 
   reviews.push(review) if review.save

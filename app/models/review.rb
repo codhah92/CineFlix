@@ -8,6 +8,7 @@
 #  rating     :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  body       :text
 #
 
 class Review < ActiveRecord::Base
