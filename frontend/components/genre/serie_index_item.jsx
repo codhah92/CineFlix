@@ -41,6 +41,7 @@ class SerieIndexItem extends React.Component {
         return review;
       }
     });
+    debugger
     if (!!currentUserReview) {
       this.props.updateRating(currentUserReview.id, nextValue);
     } else {

@@ -29,13 +29,14 @@
   width: 220px;
   height: 127.25px;
   overflow: hidden;
-  opacity: 0.7;
-  background: black;
+  opacity: 1;
+  transition: 0.3s ease-in-out;
 }
 
 .serie-image:hover {
   cursor: pointer;
   opacity: 1;
+  transform: scale(1.5);
 }
 
 .genre-carousel-row {

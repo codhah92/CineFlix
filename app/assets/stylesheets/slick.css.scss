@@ -1,35 +1,35 @@
 .slick-slider
 {
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
 }
 
 .slick-list
 {
-    position: relative;
+  position: relative;
 
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 40px;
 }
 .slick-list:focus
 {
-    outline: none;
+  outline: none;
 }
 .slick-list.dragging
 {
-    cursor: pointer;
-    cursor: hand;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .slick-track
 {
-    position: relative;
-    top: 0;
-    left: 0;
+  position: relative;
+  top: 0;
+  left: 0;
 
-    display: block;
+  display: block;
 }
 
 .sliderPopper{
@@ -40,15 +40,15 @@
 
 .slick-loading .slick-track
 {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .slick-slide
 {
-    display: none;
-    float: left;
-    height: 100%;
-    min-height: 1px;
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
 }
 [dir='rtl'] .slick-slide
 {
@@ -56,11 +56,17 @@
 }
 .slick-slide img
 {
-    display: block;
-    max-width: 100%;
-    padding: 0 5px 0 0;
-    background: #141414;
+  display: block;
+  max-width: 100%;
+  margin: 0 5px 0 0;
+  background: #141414;
+  transition: 0.3s ease-in-out;
 }
+
+.slick-slide img:hover {
+  transform: scale(1.5);
+}
+
 .slick-slide.slick-loading img
 {
     display: none;
@@ -141,7 +147,7 @@
   height: 83%;
   width: 50px;
   right: -40px;
-  top: 69px;
+  top: 100px;
   background: black;
   background-image: asset-url("arrow.png");
   background-repeat: no-repeat;
