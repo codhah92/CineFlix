@@ -170,6 +170,7 @@ class SerieIndexItem extends React.Component {
       return (<div key={review.id} className="detail-group group">
         <DetailIndexItem
           review={review}
+          className="review-item"
         />
       </div>
       );
