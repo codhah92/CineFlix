@@ -41,7 +41,6 @@ class SerieIndexItem extends React.Component {
         return review;
       }
     });
-    debugger
     if (!!currentUserReview) {
       this.props.updateRating(currentUserReview.id, nextValue);
     } else {
@@ -211,6 +210,10 @@ class SerieIndexItem extends React.Component {
             </section>
           </div>
           <section className="episode-index-items group">
+            <header className="tabs">
+              <label className="episodes-tab">Episodes</label>
+              <label className="details-tab">Details</label>
+            </header>
             {episodeIndexItems}
           </section>
         </Modal>

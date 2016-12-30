@@ -11,7 +11,6 @@
   display: block;
   overflow: hidden;
   margin: 0;
-  padding: 40px;
 }
 .slick-list:focus
 {
@@ -60,11 +59,6 @@
   max-width: 100%;
   margin: 0 5px 0 0;
   background: #141414;
-  transition: 0.3s ease-in-out;
-}
-
-.slick-slide img:hover {
-  transform: scale(1.5);
 }
 
 .slick-slide.slick-loading img
@@ -147,7 +141,7 @@
   height: 83%;
   width: 50px;
   right: -40px;
-  top: 100px;
+  top: 83px;
   background: black;
   background-image: asset-url("arrow.png");
   background-repeat: no-repeat;
