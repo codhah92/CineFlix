@@ -45,6 +45,11 @@
   color: #E50914;
 }
 
+.tabs {
+  height: 70px;
+  margin-top: 10px;
+}
+
 .episodes-tab,
 .details-tab {
   display: block;
@@ -79,17 +84,65 @@
   display: none;
 }
 
-.member-reviews {
+.reviews-container {
   width: 30%;
+  padding-bottom: 20px;
+  display: block;
+  float: left;
+  margin-right: 30px;
 }
 
-.member-reviews-header {
+// .member-reviews {
+//   width: 30%;
+//   display: block;
+//   float: left;
+// }
+
+.member-reviews-header,
+.review-header {
   margin-bottom: 20px;
   color: #999;
   font-size: 24px;
 }
 
 .review-body {
-  color: #999;
+  color: grey;
   margin-bottom: 10px;
+  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 300;
+  cursor: default;
+}
+
+.review-form {
+  width: 66%;
+  display: block;
+  float: left;
+}
+
+.review-form-box {
+  outline: none;
+  background: transparent;
+  color: grey;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.review-submit {
+  text-decoration: none;
+  background: rgb(229, 9, 20);
+  color: white;
+  text-align: center;
+  border: 1px solid rgb(229, 9, 20);
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.55);
+  font-size: 18px;
+  font-weight: 250;
+  letter-spacing: 0.5px;
+  outline: none;
+}
+
+.review-submit:hover {
+  cursor: pointer;
+  background:rgb(244, 6, 18);
 }

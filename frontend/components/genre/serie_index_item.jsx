@@ -18,6 +18,7 @@ class SerieIndexItem extends React.Component {
       this.state = {
         episodesTab: true,
         modalIsOpen: false,
+        reviewBody: currentUserReview.body ? currentUserReview.body : "",
         rating: currentUserReview.rating,
         currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
       };
@@ -25,6 +26,7 @@ class SerieIndexItem extends React.Component {
       this.state = {
         episodesTab: true,
         modalIsOpen: false,
+        reviewBody: "",
         rating: props.serie.avg_rating[0] ? parseFloat(props.serie.avg_rating[0].avg) : 0,
         currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
       };
@@ -37,6 +39,17 @@ class SerieIndexItem extends React.Component {
     this.onStarClick = this.onStarClick.bind(this);
     this.activateDetailsTab = this.activateDetailsTab.bind(this);
     this.activateEpisodesTab = this.activateEpisodesTab.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   this.
+  // }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({ reviewBody: e.target.value });
   }
 
   onStarClick(nextValue, prevValue, name) {
@@ -212,17 +225,36 @@ class SerieIndexItem extends React.Component {
 
     const bottomDetails = this.state.episodesTab ?
       episodeIndexItems : (
-        <div>
-          <h3 className="member-reviews-header">Member Reviews <br/>
-            <StarRatingComponent
-              name='rating'
-              className='rating'
-              starCount={5}
-              value={parseFloat(this.props.serie.avg_rating[0].avg)}
-              starColor='Red'
-              editing={false}/>
-          </h3>
-            {detailIndexItems}
+        <div className="reviews-form-container group">
+          <div className="reviews-container group">
+            <h3 className="member-reviews-header">Member Reviews <br/>
+              <StarRatingComponent
+                name='rating'
+                className='rating'
+                starCount={5}
+                value={parseFloat(this.props.serie.avg_rating[0].avg)}
+                starColor='Red'
+                editing={false}/>
+            </h3>
+              {detailIndexItems}
+          </div>
+            <div className="review-header">Write a Review:
+              <span className="rating">{ starRatingComponent }</span>
+            </div>
+            <div className="review-form">
+              <form className="form-container group"onSubmit={this.handleSubmit}>
+                <textarea
+                  rows={12}
+                  cols={100}
+                  minLength={20}
+                  className="review-form-box"
+                  placeholder="Write your review here. Review must be at least 20 characters long."
+                  value={this.state.reviewBody}
+                  onChange={this.handleChange}
+                  />
+                <input className="review-submit" type="submit" value="Submit" />
+              </form>
+            </div>
         </div>
       );
 
@@ -244,7 +276,7 @@ class SerieIndexItem extends React.Component {
           <div className="top-modal group">
             <section className="description-info group">
               <p className="serie-title">{this.props.serie.title}</p>
-              <p className="rating">{ starRatingComponent }</p>
+              <div className="rating">{ starRatingComponent }</div>
               <p className="serie-year">{this.props.serie.year}</p>
               <p className="serie-description">
                 {this.props.serie.description}

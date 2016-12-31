@@ -4,6 +4,6 @@ class Api::GenresController < ApplicationController
   end
 
   def show
-    @genre = Genre.find(params[:id])
+    @genre = Genre.includes(series: [:episodes, :reviews]).find(params[:id])
   end
 end
