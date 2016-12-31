@@ -4,11 +4,13 @@
   border-bottom: 2px solid #000;
   height: 200px;
   min-width: 1000px;
+  overflow: hidden;
 }
 
 .description-info,
 .other-details {
   margin-top: 20px;
+  overflow: hidden;
 }
 
 .serie-title {

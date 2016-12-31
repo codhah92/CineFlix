@@ -156,7 +156,7 @@ class SerieIndexItem extends React.Component {
         right                      : '40px',
         bottom                     : '0',
         background                 : '#141414',
-        overflow                   : 'auto',
+        // overflow                   : 'auto',
         WebkitOverflowScrolling    : 'touch',
         outline                    : 'none',
         padding                    : '0',
@@ -166,7 +166,7 @@ class SerieIndexItem extends React.Component {
       },
     };
 
-    const detailIndex = this.props.serie.reviews.map((review, id) => {
+    const detailIndexItems = this.props.serie.reviews.map((review, id) => {
       return (<div key={review.id} className="detail-group group">
         <DetailIndexItem
           review={review}
@@ -208,7 +208,12 @@ class SerieIndexItem extends React.Component {
       );
     });
 
-    const bottomDetails = this.state.episodesTab ? episodeIndexItems : detailIndex;
+    const bottomDetails = this.state.episodesTab ?
+      episodeIndexItems : (
+        <h3 className="member-reviews">Member Reviews
+          {detailIndexItems}
+        </h3>
+      );
 
     return (
       <div className="serie-group group">
