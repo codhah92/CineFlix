@@ -5,7 +5,7 @@ import StarRatingComponent from 'react-star-rating-component';
 class DetailIndexItem extends React.Component {
   render() {
     return (
-      <div>
+      <div className="member-reviews">
         <StarRatingComponent
           name='member-rating'
           className='member-rating'

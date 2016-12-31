@@ -210,9 +210,18 @@ class SerieIndexItem extends React.Component {
 
     const bottomDetails = this.state.episodesTab ?
       episodeIndexItems : (
-        <h3 className="member-reviews">Member Reviews
-          {detailIndexItems}
-        </h3>
+        <div>
+          <h3 className="member-reviews-header">Member Reviews <br/>
+            <StarRatingComponent
+              name='rating'
+              className='rating'
+              starCount={5}
+              value={parseFloat(this.props.serie.avg_rating[0].avg)}
+              starColor='Red'
+              editing={false}/>
+          </h3>
+            {detailIndexItems}
+        </div>
       );
 
     return (
