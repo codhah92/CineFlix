@@ -59,7 +59,9 @@ class SerieIndexItem extends React.Component {
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({modalIsOpen: false, episodesTab: true});
+    $('.episodes-red-bar').removeClass('hidden');
+    $('.details-red-bar').addClass('hidden');
   }
 
   changeCurrentVideoId(id) {
@@ -166,7 +168,7 @@ class SerieIndexItem extends React.Component {
       },
     };
 
-    const detailIndexItems = this.props.serie.reviews.map((review, id) => {
+    const detailIndexItems = this.props.serie.reviews.slice(0, 4).map((review, id) => {
       return (<div key={review.id} className="detail-group group">
         <DetailIndexItem
           review={review}
