@@ -15,6 +15,7 @@ class Api::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.rating = params[:rating]
+    @review.body = params[:body]
     if @review.save
       @serie = Serie.find(@review.serie_id)
       render 'api/series/show'

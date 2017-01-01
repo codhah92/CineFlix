@@ -39,15 +39,28 @@ class SerieIndexItem extends React.Component {
     this.onStarClick = this.onStarClick.bind(this);
     this.activateDetailsTab = this.activateDetailsTab.bind(this);
     this.activateEpisodesTab = this.activateEpisodesTab.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.updateBody = this.updateBody.bind(this);
+    this.submitReview = this.submitReview.bind(this);
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.
-  // }
+  submitReview(e) {
+    e.preventDefault();
+    const currentUserReview = this.props.serie.reviews.find((review) => {
+      if (review.user_id === this.props.currentUser.id) {
+        return review;
+      }
+    });
 
-  handleChange(e) {
+    if (!!currentUserReview) {
+      this.props.updateReviewBody(currentUserReview.id, this.state.reviewBody, this.state.rating);
+    } else {
+      this.props.createReviewBody({ rating: this.state.rating, body: this.state.reviewBody, serie_id: this.props.serie.id});
+    }
+
+    this.setState({ reviewBody: this.state.reviewBody });
+  }
+
+  updateBody(e) {
     e.preventDefault();
     this.setState({ reviewBody: e.target.value });
   }
@@ -242,7 +255,7 @@ class SerieIndexItem extends React.Component {
               <span className="rating">{ starRatingComponent }</span>
             </div>
             <div className="review-form">
-              <form className="form-container group"onSubmit={this.handleSubmit}>
+              <form className="form-container group"onSubmit={this.submitReview}>
                 <textarea
                   rows={12}
                   cols={100}
@@ -250,7 +263,7 @@ class SerieIndexItem extends React.Component {
                   className="review-form-box"
                   placeholder="Write your review here. Review must be at least 20 characters long."
                   value={this.state.reviewBody}
-                  onChange={this.handleChange}
+                  onChange={this.updateBody}
                   />
                 <input className="review-submit" type="submit" value="Submit" />
               </form>
