@@ -16,11 +16,14 @@ class SerieIndexItem extends React.Component {
     });
     if (currentUserReview) {
       this.state = {
+        currentUserReview: currentUserReview,
         episodesTab: true,
         modalIsOpen: false,
+        savedReview: currentUserReview.body ? true : false,
         reviewBody: currentUserReview.body ? currentUserReview.body : "",
         rating: currentUserReview.rating,
-        currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
+        currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : "",
+        starColor: "Gold"
       };
     } else {
       this.state = {
@@ -28,7 +31,8 @@ class SerieIndexItem extends React.Component {
         modalIsOpen: false,
         reviewBody: "",
         rating: props.serie.avg_rating[0] ? parseFloat(props.serie.avg_rating[0].avg) : 0,
-        currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : ""
+        currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : "",
+        starColor: "Red"
       };
     }
 
@@ -51,13 +55,33 @@ class SerieIndexItem extends React.Component {
       }
     });
 
-    if (!!currentUserReview) {
-      this.props.updateReviewBody(currentUserReview.id, this.state.reviewBody, this.state.rating);
+    if (currentUserReview) {
+      this.props.updateReviewBody(
+        currentUserReview.id,
+        this.state.reviewBody,
+        this.state.rating
+      );
     } else {
-      this.props.createReviewBody({ rating: this.state.rating, body: this.state.reviewBody, serie_id: this.props.serie.id});
+      this.props.createReviewBody({
+        rating: this.state.rating,
+        body: this.state.reviewBody,
+        serie_id: this.props.serie.id
+      });
     }
 
-    this.setState({ reviewBody: this.state.reviewBody });
+    if (this.state.savedReview) {
+      this.setState({
+        rating: this.state.rating,
+        reviewBody: this.state.reviewBody,
+        savedReview: false
+      });
+    } else {
+      this.setState({
+        rating: this.state.rating,
+        reviewBody: this.state.reviewBody,
+        savedReview: true
+      });
+    }
   }
 
   updateBody(e) {
@@ -77,7 +101,7 @@ class SerieIndexItem extends React.Component {
     } else {
       this.props.createRating({ rating: nextValue, serie_id: this.props.serie.id});
     }
-    this.setState({ rating: nextValue });
+    this.setState({ rating: nextValue, starColor: "Gold" });
   }
 
   openModal() {
@@ -146,26 +170,14 @@ class SerieIndexItem extends React.Component {
       if (this.props.currentUser === null){
         return <div></div>;
       } else {
-        if (allReviewedUserIds.includes(this.props.currentUser.id)) {
-          starRatingComponent = (<StarRatingComponent
-              name='rating'
-              className='rating'
-              starCount={5}
-              value={this.state.rating}
-              starColor='Gold'
-              onStarClick={this.onStarClick.bind(this)} />
-          );
-        } else {
-          starRatingComponent = (
-            <StarRatingComponent
-              name='rating'
-              className='rating'
-              starCount={5}
-              value={this.state.rating}
-              starColor='Red'
-              onStarClick={this.onStarClick.bind(this)} />
-          );
-        }
+        starRatingComponent = (<StarRatingComponent
+            name='rating'
+            className='rating'
+            starCount={5}
+            value={this.state.rating}
+            starColor={this.state.starColor}
+            onStarClick={this.onStarClick.bind(this)} />
+        );
       }
     const customStyles = {
       overlay : {
@@ -184,7 +196,6 @@ class SerieIndexItem extends React.Component {
         right                      : '40px',
         bottom                     : '0',
         background                 : '#141414',
-        // overflow                   : 'auto',
         WebkitOverflowScrolling    : 'touch',
         outline                    : 'none',
         padding                    : '0',
@@ -203,6 +214,22 @@ class SerieIndexItem extends React.Component {
       </div>
       );
     });
+
+    if (this.state.reviewBody.length >= 1) {
+      detailIndexItems.unshift(
+        <div key={0} className='current-user-review'>
+          <StarRatingComponent
+            name='current-user-rating'
+            className='current-user-rating'
+            starColor={'Gold'}
+            starCount={5}
+            editing={false}
+            onStarClick={() => {}}
+            value={this.state.rating} />
+          <p className='review-body'>{this.state.reviewBody}</p>
+        </div>
+      );
+    }
 
     const episodeIndexItems = this.props.serie.episodes.map((episode, id) => {
       if (episode.video_url === this.state.currentVideoId) {
@@ -236,6 +263,10 @@ class SerieIndexItem extends React.Component {
       );
     });
 
+    const submit = this.state.savedReview ? "Edit" : "Submit";
+
+    const readOnlyValue = this.state.savedReview ? true : false;
+
     const bottomDetails = this.state.episodesTab ?
       episodeIndexItems : (
         <div className="reviews-form-container group">
@@ -255,17 +286,18 @@ class SerieIndexItem extends React.Component {
               <span className="rating">{ starRatingComponent }</span>
             </div>
             <div className="review-form">
-              <form className="form-container group"onSubmit={this.submitReview}>
+              <form className="form-container group" onSubmit={this.submitReview}>
                 <textarea
                   rows={12}
                   cols={100}
                   minLength={20}
                   className="review-form-box"
-                  placeholder="Write your review here. Review must be at least 20 characters long."
+                  placeholder="Write your review here."
                   value={this.state.reviewBody}
                   onChange={this.updateBody}
+                  readOnly={readOnlyValue}
                   />
-                <input className="review-submit" type="submit" value="Submit" />
+                <input className="review-submit" type="submit" value={submit} />
               </form>
             </div>
         </div>

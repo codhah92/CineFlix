@@ -111,7 +111,6 @@
   line-height: 1.2;
   font-size: 14px;
   font-weight: 300;
-  cursor: default;
 }
 
 .review-form {
@@ -128,7 +127,8 @@
   font-size: 12px;
 }
 
-.review-submit {
+.review-submit,
+.current-user-review-delete {
   text-decoration: none;
   background: rgb(229, 9, 20);
   color: white;
@@ -140,9 +140,23 @@
   font-weight: 250;
   letter-spacing: 0.5px;
   outline: none;
+  border-bottom: 2px solid #880000
 }
 
-.review-submit:hover {
+.current-user-review-delete {
+  font-size: 12px;
+  padding: 2px;
+}
+
+.review-submit:hover,
+.current-user-review-delete:hover {
   cursor: pointer;
   background:rgb(244, 6, 18);
+}
+
+.review-submit:active,
+.current-user-review-delete:active {
+  background-color: #BF0000;
+  border-bottom: none;
+  bottom: -1px;
 }

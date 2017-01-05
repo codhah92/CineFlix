@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @serie = Serie.find(params[:review][:serie_id])
+    @serie = Serie.includes(:genres).find(params[:review][:serie_id])
     @review.serie_id = @serie.id
     if @review.save
       @serie

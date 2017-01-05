@@ -4,6 +4,8 @@ json.array! @series do |serie|
   json.year serie.year
   json.description serie.description
   json.avg_rating serie.avg_rating
+  json.reviews serie.reviews
+  json.genres serie.genres
   json.movie serie.movie
   json.image_url asset_path(serie.image.url(:medium))
   json.episodes serie.episodes do |episode|
