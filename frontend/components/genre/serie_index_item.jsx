@@ -96,10 +96,13 @@ class SerieIndexItem extends React.Component {
         return review;
       }
     });
-    if (!!currentUserReview) {
+    if (this.state.currentUserReview) {
       this.props.updateRating(currentUserReview.id, nextValue);
     } else {
-      this.props.createRating({ rating: nextValue, serie_id: this.props.serie.id});
+      this.props.createRating({
+        rating: nextValue,
+        serie_id: this.props.serie.id
+      });
     }
     this.setState({ rating: nextValue, starColor: "Gold" });
   }
@@ -163,10 +166,6 @@ class SerieIndexItem extends React.Component {
 
   render () {
     let starRatingComponent;
-      const allReviewedUserIds = this.props.serie.reviews.map((review) => {
-        return review.user_id;
-      });
-
       if (this.props.currentUser === null){
         return <div></div>;
       } else {
@@ -176,7 +175,7 @@ class SerieIndexItem extends React.Component {
             starCount={5}
             value={this.state.rating}
             starColor={this.state.starColor}
-            onStarClick={this.onStarClick.bind(this)} />
+            onStarClick={this.onStarClick} />
         );
       }
     const customStyles = {
