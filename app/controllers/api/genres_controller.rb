@@ -1,5 +1,6 @@
 class Api::GenresController < ApplicationController
   def index
+    @all_ratings = Serie.all_ratings
     @genres = Genre.includes(series: [:episodes, :genres, :reviews])
   end
 

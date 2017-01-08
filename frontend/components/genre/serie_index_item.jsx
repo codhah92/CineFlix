@@ -30,7 +30,7 @@ class SerieIndexItem extends React.Component {
         episodesTab: true,
         modalIsOpen: false,
         reviewBody: "",
-        rating: props.serie.avg_rating[0] ? parseFloat(props.serie.avg_rating[0].avg) : 0,
+        rating: props.serie.avg_rating || 0,
         currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : "",
         starColor: "Red"
       };
@@ -275,7 +275,7 @@ class SerieIndexItem extends React.Component {
                 name='rating'
                 className='rating'
                 starCount={5}
-                value={parseFloat(this.props.serie.avg_rating[0].avg)}
+                value={this.props.serie.avg_rating}
                 starColor='Red'
                 editing={false}/>
             </h3>

@@ -28,8 +28,20 @@ class Serie < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  def self.all_ratings
+    ratings = {}
+    self
+      .select('series.*, AVG(reviews.rating) AS avg_rating')
+      .joins("LEFT OUTER JOIN reviews ON reviews.serie_id = series.id")
+      .group('series.id')
+      .each do |s|
+        ratings[s.id] = s.avg_rating
+      end
+    ratings
+  end
+
   def get_avg_rating
-    reviews.select('AVG(rating)').group(:serie_id)
+    reviews.select('AVG(rating) as avg_rating').group(:serie_id)
   end
 
   def user_rating(user)
