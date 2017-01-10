@@ -216,7 +216,7 @@ class SerieIndexItem extends React.Component {
 
     if (this.state.reviewBody.length >= 1) {
       detailIndexItems.unshift(
-        <div key={0} className='current-user-review'>
+        <div key={0} className='current-user-review group'>
           <StarRatingComponent
             name='current-user-rating'
             className='current-user-rating'
@@ -225,7 +225,7 @@ class SerieIndexItem extends React.Component {
             editing={false}
             onStarClick={() => {}}
             value={this.state.rating} />
-          <p className='review-body'>{this.state.reviewBody}</p>
+          <p className='current-user-review-body'>{this.state.reviewBody}</p>
         </div>
       );
     }
@@ -319,12 +319,12 @@ class SerieIndexItem extends React.Component {
             </section>
           <div className="top-modal group">
             <section className="description-info group">
-              <p className="serie-title">{this.props.serie.title}</p>
+              <div className="serie-title">{this.props.serie.title}</div>
               <div className="rating">{ starRatingComponent }</div>
-              <p className="serie-year">{this.props.serie.year}</p>
-              <p className="serie-description">
+              <div className="serie-year">{this.props.serie.year}</div>
+              <div className="serie-description">
                 {this.props.serie.description}
-              </p>
+              </div>
             </section>
             <section className="other-details">
               <p>{this.renderMyListToggle()}</p>

@@ -44,6 +44,9 @@
 .rating {
   font-size: 1.4vw;
   display: block;
+  width: 4.4em;
+  float: left;
+  margin-right: 5px;
 }
 
 .rating:hover {
@@ -51,10 +54,9 @@
 }
 
 .serie-year {
-  display: block;
-  position: absolute;
-  left: 100px;
-  top: 44px;
+  width: 3em;
+  float: left;
+  margin-top: .3em;
 }
 
 .serie-description {
@@ -62,6 +64,9 @@
   font-size: 15px;
   line-height: 18px;
   font-weight: 300;
+  display: block;
+  float: left;
+  width: 100%;
 }
 
 .my-list-button {
@@ -84,8 +89,4 @@
 
 .serie-genres {
   margin-top: 10px;
-}
-
-.rating {
-
 }

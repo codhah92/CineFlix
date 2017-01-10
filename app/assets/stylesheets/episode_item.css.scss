@@ -92,11 +92,9 @@
   margin-right: 30px;
 }
 
-// .member-reviews {
-//   width: 30%;
-//   display: block;
-//   float: left;
-// }
+.member-reviews {
+  margin-top: 20px;
+}
 
 .member-reviews-header,
 .review-header {
@@ -159,4 +157,19 @@
   background-color: #BF0000;
   border-bottom: none;
   bottom: -1px;
+}
+
+.current-user-rating {
+  display: block;
+  float: left;
+}
+
+.current-user-review-body {
+  display: block;
+  float: left;
+  width: 100%;
+  color: grey;
+  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 300;
 }
