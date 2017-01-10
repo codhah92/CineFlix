@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import Modal from 'react-modal';
+import DetailIndexItem from '../genre/detail_index_item';
 import EpisodeIndexItem from '../genre/episode_index_item';
 import StarRatingComponent from 'react-star-rating-component';
 import VideoPlayer from '../video_player/video_player';
@@ -8,20 +9,103 @@ import VideoPlayer from '../video_player/video_player';
 class SearchIndexItem extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {
-      modalIsOpen: false,
-      rating: props.title.avg_rating,
-      currentVideoId: props.title.episodes[0] ? props.title.episodes[0].video_url : ""
-    };
+    const currentUserReview = props.title.reviews.find((review) => {
+      if (review.user_id === props.currentUser.id) {
+        return review;
+      }
+    });
+
+    if (currentUserReview) {
+      this.state = {
+        currentUserReview: currentUserReview,
+        episodesTab: true,
+        modalIsOpen: false,
+        savedReview: currentUserReview.body ? true : false,
+        reviewBody: currentUserReview.body ? currentUserReview.body : "",
+        rating: currentUserReview.rating,
+        currentVideoId: props.title.episodes[0] ? props.title.episodes[0].video_url : "",
+        starColor: "Gold"
+      };
+    } else {
+      this.state = {
+        episodesTab: true,
+        modalIsOpen: false,
+        reviewBody: "",
+        rating: props.title.avg_rating || 0,
+        currentVideoId: props.title.episodes[0] ? props.title.episodes[0].video_url : "",
+        starColor: "Red"
+      };
+    }
 
     this.handleMyListClick = this.handleMyListClick.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.changeCurrentVideoId = this.changeCurrentVideoId.bind(this);
+    this.onStarClick = this.onStarClick.bind(this);
+    this.activateDetailsTab = this.activateDetailsTab.bind(this);
+    this.activateEpisodesTab = this.activateEpisodesTab.bind(this);
+    this.updateBody = this.updateBody.bind(this);
+    this.submitReview = this.submitReview.bind(this);
+  }
+
+  submitReview(e) {
+    e.preventDefault();
+    const currentUserReview = this.props.title.reviews.find((review) => {
+      if (review.user_id === this.props.currentUser.id) {
+        return review;
+      }
+    });
+
+    if (currentUserReview) {
+      this.props.updateReviewBody(
+        currentUserReview.id,
+        this.state.reviewBody,
+        this.state.rating
+      );
+    } else {
+      this.props.createReviewBody({
+        rating: this.state.rating,
+        body: this.state.reviewBody,
+        serie_id: this.props.title.id
+      });
+    }
+
+    if (this.state.savedReview) {
+      this.setState({
+        rating: this.state.rating,
+        reviewBody: this.state.reviewBody,
+        savedReview: false
+      });
+    } else {
+      this.setState({
+        rating: this.state.rating,
+        reviewBody: this.state.reviewBody,
+        savedReview: true
+      });
+    }
+  }
+
+  updateBody(e) {
+    e.preventDefault();
+    this.setState({ reviewBody: e.target.value });
   }
 
   onStarClick(nextValue, prevValue, name) {
-    this.setState({ rating: nextValue });
+    let currentUserId = this.props.currentUser.id;
+    const currentUserReview = this.props.title.reviews.find((review) => {
+      if (review.user_id === this.props.currentUser.id) {
+        return review;
+      }
+    });
+    if (this.state.currentUserReview) {
+      this.props.updateRating(currentUserReview.id, nextValue);
+    } else {
+      this.props.createRating({
+        rating: nextValue,
+        serie_id: this.props.title.id
+      });
+    }
+    this.setState({ rating: nextValue, starColor: "Gold" });
   }
 
   openModal() {
@@ -30,6 +114,8 @@ class SearchIndexItem extends React.Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+    $('.episodes-red-bar').removeClass('hidden');
+    $('.details-red-bar').addClass('hidden');
   }
 
   changeCurrentVideoId(id) {
@@ -67,7 +153,32 @@ class SearchIndexItem extends React.Component {
     );
   }
 
+  activateEpisodesTab() {
+    this.setState({ episodesTab: true });
+    $('.episodes-red-bar').removeClass('hidden');
+    $('.details-red-bar').addClass('hidden');
+  }
+
+  activateDetailsTab() {
+    this.setState({ episodesTab: false });
+    $('.details-red-bar').removeClass('hidden');
+    $('.episodes-red-bar').addClass('hidden');
+  }
+
   render () {
+    let starRatingComponent;
+      if (this.props.currentUser === null){
+        return <div></div>;
+      } else {
+        starRatingComponent = (<StarRatingComponent
+            name='rating'
+            className='rating'
+            starCount={5}
+            value={this.state.rating}
+            starColor={this.state.starColor}
+            onStarClick={this.onStarClick} />
+        );
+      }
     const customStyles = {
       overlay : {
         position          : 'fixed',
@@ -85,7 +196,6 @@ class SearchIndexItem extends React.Component {
         right                      : '40px',
         bottom                     : '0',
         background                 : '#141414',
-        overflow                   : 'auto',
         WebkitOverflowScrolling    : 'touch',
         outline                    : 'none',
         padding                    : '0',
@@ -94,6 +204,32 @@ class SearchIndexItem extends React.Component {
         margin                     : '0 auto'
       },
     };
+
+    const detailIndexItems = this.props.title.reviews.slice(0, 4).map((review, id) => {
+      return (<div key={review.id} className="detail-group group">
+        <DetailIndexItem
+          review={review}
+          className="review-item"
+        />
+      </div>
+      );
+    });
+
+    if (this.state.reviewBody.length >= 1) {
+      detailIndexItems.unshift(
+        <div key={1} className='current-user-review group'>
+          <StarRatingComponent
+            name='current-user-rating'
+            className='current-user-rating'
+            starColor={'Gold'}
+            starCount={5}
+            editing={false}
+            onStarClick={() => {}}
+            value={this.state.rating} />
+          <p className='current-user-review-body'>{this.state.reviewBody}</p>
+        </div>
+      );
+    }
 
     const episodeIndexItems = this.props.title.episodes.map((episode, id) => {
       if (episode.video_url === this.state.currentVideoId) {
@@ -121,6 +257,52 @@ class SearchIndexItem extends React.Component {
       );
     }});
 
+    const genres = this.props.title.genres.map((genre) => {
+      return (
+        <li key={genre.id} className="series-genre">{genre.name}</li>
+      );
+    });
+
+    const submit = this.state.savedReview ? "Edit" : "Submit";
+
+    const readOnlyValue = this.state.savedReview ? true : false;
+
+    const bottomDetails = this.state.episodesTab ?
+      episodeIndexItems : (
+        <div className="reviews-form-container group">
+          <div className="reviews-container group">
+            <h3 className="member-reviews-header">Member Reviews <br/>
+              <StarRatingComponent
+                name='rating'
+                className='rating'
+                starCount={5}
+                value={this.props.title.avg_rating}
+                starColor='Red'
+                editing={false}/>
+            </h3>
+              {detailIndexItems}
+          </div>
+            <div className="review-header">Write a Review:
+              <span className="rating">{ starRatingComponent }</span>
+            </div>
+            <div className="review-form">
+              <form className="form-container group" onSubmit={this.submitReview}>
+                <textarea
+                  rows={12}
+                  cols={100}
+                  minLength={20}
+                  className="review-form-box"
+                  placeholder="Write your review here."
+                  value={this.state.reviewBody}
+                  onChange={this.updateBody}
+                  readOnly={readOnlyValue}
+                  />
+                <input className="review-submit" type="submit" value={submit} />
+              </form>
+            </div>
+        </div>
+      );
+
     return (
       <div className="serie-group group">
         <img src={this.props.title.image_url}
@@ -139,25 +321,28 @@ class SearchIndexItem extends React.Component {
             </section>
           <div className="top-modal group">
             <section className="description-info group">
-              <p className="serie-title">{this.props.title.title}</p>
-              <StarRatingComponent
-                name='rating'
-                className='rating'
-                starCount={5}
-                value={this.state.rating}
-                onStarClick={this.onStarClick.bind(this)} />
-              <p className="serie-year">{this.props.title.year}</p>
-              <p className="serie-description">
+              <div className="serie-title">{this.props.title.title}</div>
+              <div className="rating">{ starRatingComponent }</div>
+              <div className="serie-year">{this.props.title.year}</div>
+              <div className="serie-description">
                 {this.props.title.description}
-              </p>
+              </div>
             </section>
             <section className="other-details">
               <p>{this.renderMyListToggle()}</p>
-              <p className="serie-genres">Genres: {this.props.title.genres}</p>
+              <ul className="serie-genres">Genres: {genres}</ul>
             </section>
           </div>
           <section className="episode-index-items group">
-            {episodeIndexItems}
+            <header className="tabs">
+              <label className="episodes-tab" onClick={ this.activateEpisodesTab }>Episodes
+                <span className="episodes-red-bar"></span>
+              </label>
+              <label className="details-tab" onClick={ this.activateDetailsTab }>Details
+                <span className="details-red-bar hidden"></span>
+              </label>
+            </header>
+            {bottomDetails}
           </section>
         </Modal>
       </div>

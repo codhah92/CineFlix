@@ -17,15 +17,20 @@ class Search extends React.Component {
   }
 
   render () {
-    const searchIndexItems = this.props.searchedTitles.map((title) => {
+    const searchIndexItems = this.props.searchedTitles.map((title, id) => {
       return (
-        <ul className="search-carousel group">
-          <li key={title.id} className="search-index-item">
+        <ul key={title.id} className="search-carousel group">
+          <li key={id} className="search-index-item">
             <SearchIndexItem
+              currentUser={this.props.currentUser}
               addSerieToMyList={this.props.createMyListItem}
               removeSerieFromMyList={ this.props.removeMyListItem }
               title={ title }
               favorites={this.props.favorites}
+              updateRating={this.props.updateRating}
+              createRating={this.props.createRating}
+              updateReviewBody={this.props.updateReviewBody}
+              createReviewBody={this.props.createReviewBody}
               />
           </li>
         </ul>
