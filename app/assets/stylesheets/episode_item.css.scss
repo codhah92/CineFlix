@@ -121,6 +121,7 @@
   width: 67%;
   display: block;
   float: left;
+  margin-top: 1.3em;
 }
 
 .review-form-box {
@@ -131,7 +132,7 @@
   font-size: 12px;
   display: block;
   float: left;
-  width: 100%;
+  width: 93%;
 }
 
 .review-submit,
@@ -158,6 +159,7 @@
 .current-user-review-delete {
   font-size: 12px;
   padding: 2px;
+  width: 50px;
 }
 
 .review-submit:hover,

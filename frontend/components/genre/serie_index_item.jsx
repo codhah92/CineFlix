@@ -277,7 +277,7 @@ class SerieIndexItem extends React.Component {
       );
     });
 
-    const submit = this.state.savedReview ? "Edit" : "Submit";
+    const submit = this.state.savedReview ? "Edit Review" : "Submit Review";
 
     const readOnlyValue = this.state.savedReview ? true : false;
 
@@ -296,7 +296,7 @@ class SerieIndexItem extends React.Component {
             </h3>
               {detailIndexItems}
           </div>
-            <div className="review-header">Write a Review:
+            <div className="review-header">Write a Review: <br/>
               <span className="rating">{ starRatingComponent }</span>
             </div>
             <div className="review-form">
@@ -335,8 +335,10 @@ class SerieIndexItem extends React.Component {
           <div className="top-modal group">
             <section className="description-info group">
               <div className="serie-title">{this.props.serie.title}</div>
-              <div className="rating">{ starRatingComponent }</div>
-              <div className="serie-year">{this.props.serie.year}</div>
+              <div className="rating-container">
+                <div className="rating">{ starRatingComponent }</div>
+                <div className="serie-year">{this.props.serie.year}</div>
+              </div>
               <div className="serie-description">
                 {this.props.serie.description}
               </div>
