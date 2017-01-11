@@ -8,6 +8,7 @@
   width: 300px;
   margin-top: 0px;
   margin-right: 20px;
+  margin-bottom: 5em;
 }
 
 .episode-image {
@@ -68,7 +69,7 @@
 
 .episodes-red-bar,
 .details-red-bar {
-  width: 80px;
+  width: 5em;
   background: red;
   display: block;
   float: left;
@@ -82,6 +83,11 @@
 
 .hidden {
   display: none;
+}
+
+.form-container {
+  width: 100%;
+  display: block;
 }
 
 .reviews-container {
@@ -112,7 +118,7 @@
 }
 
 .review-form {
-  width: 66%;
+  width: 67%;
   display: block;
   float: left;
 }
@@ -123,6 +129,9 @@
   color: grey;
   padding: 5px;
   font-size: 12px;
+  display: block;
+  float: left;
+  width: 100%;
 }
 
 .review-submit,
@@ -139,6 +148,11 @@
   letter-spacing: 0.5px;
   outline: none;
   border-bottom: 2px solid #880000
+}
+
+.review-submit {
+  float: left;
+  display: block;
 }
 
 .current-user-review-delete {
