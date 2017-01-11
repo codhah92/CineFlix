@@ -14,6 +14,19 @@ class SerieIndexItem extends React.Component {
         return review;
       }
     });
+
+    const allRatings = props.serie.reviews.map((review) => {
+      return review.rating;
+    });
+
+    let sum = 0;
+
+    for (let i = 0; i < allRatings.length; i++) {
+      sum += allRatings[i];
+    }
+
+    const avgRating = sum / allRatings.length;
+
     if (currentUserReview) {
       this.state = {
         currentUserReview: currentUserReview,
@@ -23,7 +36,8 @@ class SerieIndexItem extends React.Component {
         reviewBody: currentUserReview.body ? currentUserReview.body : "",
         rating: currentUserReview.rating,
         currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : "",
-        starColor: "Gold"
+        starColor: "Gold",
+        avgRating: avgRating || 0
       };
     } else {
       this.state = {
@@ -32,7 +46,8 @@ class SerieIndexItem extends React.Component {
         reviewBody: "",
         rating: props.serie.avg_rating || 0,
         currentVideoId: props.serie.episodes[0] ? props.serie.episodes[0].video_url : "",
-        starColor: "Red"
+        starColor: "Red",
+        avgRating: avgRating || 0
       };
     }
 
@@ -265,7 +280,7 @@ class SerieIndexItem extends React.Component {
     const submit = this.state.savedReview ? "Edit" : "Submit";
 
     const readOnlyValue = this.state.savedReview ? true : false;
-    
+
     const bottomDetails = this.state.episodesTab ?
       episodeIndexItems : (
         <div className="reviews-form-container group">
@@ -275,7 +290,7 @@ class SerieIndexItem extends React.Component {
                 name='rating'
                 className='rating'
                 starCount={5}
-                value={this.props.serie.avg_rating}
+                value={this.state.avgRating}
                 starColor='Red'
                 editing={false}/>
             </h3>
