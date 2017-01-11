@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-.navbrowse-dropdown {
+.navbrowse {
   padding: 30px 26.719px 20px 26.719px;
   float: left;
   color: #E50914;
@@ -66,6 +66,29 @@
 }
 
 .profile-sign-out {
+  cursor: pointer;
+  padding: 1.5em 2em;
+  font-size: 12px;
+  color: #fff;
+}
+
+.navbrowse:hover {
+  .navbrowse-dropdown-item {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 28px;
+  }
+}
+
+.navbrowse-dropdown-item {
+  display: none;
+  border-top: 2px solid #fff;
+  background: rgba(0,0,0,.7);
+  width: 165px;
+}
+
+.navbrowse-home {
   cursor: pointer;
   padding: 1.5em 2em;
   font-size: 12px;

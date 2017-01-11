@@ -265,7 +265,7 @@ class SerieIndexItem extends React.Component {
     const submit = this.state.savedReview ? "Edit" : "Submit";
 
     const readOnlyValue = this.state.savedReview ? true : false;
-
+    
     const bottomDetails = this.state.episodesTab ?
       episodeIndexItems : (
         <div className="reviews-form-container group">

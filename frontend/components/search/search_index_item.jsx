@@ -15,6 +15,18 @@ class SearchIndexItem extends React.Component {
       }
     });
 
+    const allRatings = props.title.reviews.map((review) => {
+      return review.rating;
+    });
+
+    let sum = 0;
+
+    for (let i = 0; i < allRatings.length; i++) {
+      sum += allRatings[i];
+    }
+
+    const avgRating = sum / allRatings.length;
+
     if (currentUserReview) {
       this.state = {
         currentUserReview: currentUserReview,
@@ -22,6 +34,7 @@ class SearchIndexItem extends React.Component {
         modalIsOpen: false,
         savedReview: currentUserReview.body ? true : false,
         reviewBody: currentUserReview.body ? currentUserReview.body : "",
+        avgRating: avgRating,
         rating: currentUserReview.rating,
         currentVideoId: props.title.episodes[0] ? props.title.episodes[0].video_url : "",
         starColor: "Gold"
@@ -31,7 +44,8 @@ class SearchIndexItem extends React.Component {
         episodesTab: true,
         modalIsOpen: false,
         reviewBody: "",
-        rating: props.title.avg_rating || 0,
+        avgRating: avgRating,
+        rating: this.props.title.rating,
         currentVideoId: props.title.episodes[0] ? props.title.episodes[0].video_url : "",
         starColor: "Red"
       };
@@ -217,7 +231,7 @@ class SearchIndexItem extends React.Component {
 
     if (this.state.reviewBody.length >= 1) {
       detailIndexItems.unshift(
-        <div key={1} className='current-user-review group'>
+        <div key={0} className='current-user-review group'>
           <StarRatingComponent
             name='current-user-rating'
             className='current-user-rating'
@@ -276,7 +290,8 @@ class SearchIndexItem extends React.Component {
                 name='rating'
                 className='rating'
                 starCount={5}
-                value={this.props.title.avg_rating}
+                value={this.state.avgRating}
+                onStarClick={() => {return;}}
                 starColor='Red'
                 editing={false}/>
             </h3>

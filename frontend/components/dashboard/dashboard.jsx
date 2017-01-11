@@ -20,7 +20,14 @@ const Dashboard = ({ currentUser, router, signout, alwaysOpen }) => {
       <header className='browse-header group'>
         <nav className='browser group'>
           <h1 className='browse-logo' onClick={_redirectToBrowse} />
-          <h2 className='navbrowse-dropdown'>Browse</h2>
+          <h2 className='navbrowse group'>Browse
+            <ul className='navbrowse-dropdown'>
+              <li className='navbrowse-dropdown-item'>
+                <button className='navbrowse-home'
+                  onClick={_redirectToBrowse}>Home</button>
+              </li>
+            </ul>
+          </h2>
           <SearchBarContainer router={ router } alwaysOpen={ alwaysOpen }/>
           <h2 className='browse-user group'>{currentUserUsername}
             <ul className='profile-dropdown'>
