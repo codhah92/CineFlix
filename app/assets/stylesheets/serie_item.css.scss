@@ -44,9 +44,8 @@
 .rating {
   font-size: 16px;
   display: block;
-  width: 4.4em;
   float: left;
-  margin-right: 1em;
+  position: absolute;
 }
 
 .rating:hover {
@@ -56,6 +55,7 @@
 .serie-year {
   width: 3em;
   float: left;
+  margin-left: 5em;
 }
 
 .serie-description {

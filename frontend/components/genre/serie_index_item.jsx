@@ -297,7 +297,7 @@ class SerieIndexItem extends React.Component {
               {detailIndexItems}
           </div>
             <div className="review-header">Write a Review: <br/>
-              <span className="rating">{ starRatingComponent }</span>
+              <span className="review-rating">{ starRatingComponent }</span>
             </div>
             <div className="review-form">
               <form className="form-container group" onSubmit={this.submitReview}>
