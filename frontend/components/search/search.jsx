@@ -48,7 +48,9 @@ class Search extends React.Component {
         <DashboardContainer alwaysOpen={ true }/>
         <div className={className}>
           <p className="search-results group">Search Results: </p>
-          <div className="searchCarouselIndex group">{searchIndexItems}</div>
+          <div className="searchCarouselIndex group">
+            <div className="search-item-list">{searchIndexItems}</div>
+          </div>
         </div>
       </div>
     );

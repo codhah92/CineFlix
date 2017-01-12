@@ -58,18 +58,19 @@
 }
 
 .search-results-container {
-  margin-left: 20px;
+  margin: 0 40px 0 40px;
 }
 
 
 .search-carousel {
   float: left;
   background: #141414;
-  margin: 0px 5px 40px 0;
+  margin: 0px 5px 20px 0;
 }
 
 .search-index-item {
   z-index: 1000;
   height: 8em;
   width: 15em;
+  margin-right: 25px;
 }
