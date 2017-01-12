@@ -738,11 +738,11 @@ all_episodes = [
   }),
 # Premier League Highlights
   Episode.create!({
-    title: 'Arsenal vs Everton 1-2 Highlights',
-    synopsis: 'Arsenal vs. Everton on December 13, 2016',
+    title: 'Barcelona vs Malaga 3-0 Highlights',
+    synopsis: 'Barcelona vs. Malaga',
     serie_id: all_series[31].id,
     image: File.open('app/assets/images/series/premier_league/premier-league-episode-1.jpg'),
-    video_url: 'PHV98RrVJ1s',
+    video_url: 'rFqLo39ja_Y',
     episode_number: 1
   }),
 # 4K Videos
@@ -785,6 +785,38 @@ all_episodes = [
     image: File.open('app/assets/images/series/4K/4K-episode-5.jpg'),
     video_url: 'xDMP3i36naA',
     episode_number: 5
+  }),
+  Episode.create!({
+    title: 'The Nepalese Honey That Makes People Hallucinate',
+    synopsis: 'Nepal’s Gurung people live mostly in small villages in the vast Annapurna mountain ranges. In this remote region, they practice an ancient tradition of honey hunting where they descend towering cliffs on handmade ladders, to harvest honey nestled under jagged overhangs. ',
+    serie_id: all_series[35].id,
+    image: File.open('app/assets/images/series/vice/vice-episode-1.jpg'),
+    video_url: 'wDOvmhqvIA8',
+    episode_number: 1
+  }),
+  Episode.create!({
+    title: 'Top 10 Divisional Playoff Moments of All Time | NFL',
+    synopsis: 'We count down the top 10 moments in NFL Divisional Playoff history!',
+    serie_id: all_series[32].id,
+    image: File.open('app/assets/images/series/nfl/nfl-episode-1.jpg'),
+    video_url: 'CcDovivXSGE',
+    episode_number: 1
+  }),
+  Episode.create!({
+    title: 'Highlights | Race continues for the FedExCup at the TOUR Championship',
+    synopsis: 'In the third round of the 2016 TOUR Championship, Dustin Johnson stumbles down the stretch and settles into a tie for the lead with Kevin Chappell entering Championship Sunday.',
+    serie_id: all_series[33].id,
+    image: File.open('app/assets/images/series/golf/golf-episode-1.jpg'),
+    video_url: '8i5zpqSi4Ik',
+    episode_number: 1
+  }),
+  Episode.create!({
+    title: 'Rio Replay: Men''s High Jump Final',
+    synopsis: 'Canada''s Derek Drouin wins gold in men''s high jump in Rio 2016.',
+    serie_id: all_series[34].id,
+    image: File.open('app/assets/images/series/rio/rio-episode-1.jpg'),
+    video_url: 'zW87tVnDKIU',
+    episode_number: 1
   }),
 ]
 
@@ -860,7 +892,24 @@ random_reviews = [
   "Star wars or Legos?",
   "I'm going to the gym now... anyone wanna come with?",
   "I like to wash my hands after I watch movies... mostly because I eat a lot of popcorn",
-  "MMMMmmmmmmmm POPCORN"
+  "MMMMmmmmmmmm POPCORN",
+  "I need a soda.",
+  "Life ain't easy sometimes, but we just gotta stay in line.",
+  "Okay. This movie was absolutely amazing. The cinematography reminds me of traditional East Asian movies from the 1970s.",
+  "What...",
+  "Amazing",
+  "WOW",
+  "So cool",
+  "That was incredible",
+  "4K is so cool",
+  "I love this tv show",
+  "Meh...",
+  "Sometimes when I sit and watch TV, I think of my ex-girlfriend",
+  "WOOHOO!",
+  "Cineflix... cineflix... CINEFLIX!!!!",
+  "Star wars or Legos?",
+  "I'm going to the gym now... anyone wanna come with?",
+  "I like to wash my hands after I watch movies... mostly because I eat a lot of popcorn",
 ];
 
 200.times do
