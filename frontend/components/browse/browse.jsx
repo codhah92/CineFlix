@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player';
 import YouTube from 'react-youtube';
 
 const opts = {
-  height: '100%',
+  height: '970px',
   width: '100%',
   position: 'absolute',
   top: 0,
@@ -35,7 +35,6 @@ const Browse = ({ children }) => {
           <div className="browse-video-title">CineFlix Original: "4K"</div>
           <div className="browse-video-description">A series of scenic videos with soothing background music</div>
         </div>
-        <span className='black-square'></span>
       </div>
       <GenreContainer />
       { children }
