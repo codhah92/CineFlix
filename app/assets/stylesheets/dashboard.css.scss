@@ -94,3 +94,74 @@
   font-size: 12px;
   color: #fff;
 }
+
+.play-now,
+.browse-my-list {
+  text-transform: uppercase;
+  position: absolute;
+  left: 1em;
+  bottom: 5em;
+  background: rgb(229, 9, 20);
+  width: 6em;
+  padding: 6px;
+  margin: 9px;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.55);
+  font-size: 14px;
+  font-weight: 250;
+  letter-spacing: 0.5px;
+}
+
+.play-now:active {
+  background-color: #BF0000;
+  border-bottom: none;
+}
+
+.play-now:hover {
+  cursor: pointer;
+  background:rgb(244, 6, 18);
+}
+
+.black-square {
+  background: black;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 7em;
+  height: 5em;
+}
+
+.browse-my-list {
+  left: 9em;
+  color: #fff;
+  font-weight: 700px;
+  padding: 5px 10px;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.4);
+  opacity: 0.7;
+  border: 1px solid #ccc;
+}
+
+.browse-my-list:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.browse-video-motto {
+  position: absolute;
+  left: 1em;
+  bottom: 15em;
+  background: transparent;
+  width: 20em;
+  padding: 6px;
+}
+
+.browse-video-title {
+  font-size: 2em;
+}
+
+.browse-video-description {
+  font-size: 1.5em;
+}
