@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player';
 import YouTube from 'react-youtube';
 
 const opts = {
-  height: '970px',
+  height: '9850px',
   width: '100%',
   position: 'absolute',
   top: 0,
