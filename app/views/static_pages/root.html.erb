@@ -5,6 +5,10 @@
       user: current_user
     ).html_safe %>
   <% end %>
+  window.assets = {
+    browseVideo: "<%= asset_path("browse_video.mp4") %>"
+  }
 </script>
+
 
 <main id="root"></main>

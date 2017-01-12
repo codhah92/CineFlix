@@ -46,7 +46,7 @@ all_genres = [
   #6
   Genre.create!(name: "Documentaries"),
   #7
-  Genre.create!(name: "Coding")
+  Genre.create!(name: "Coding"),
   #8
 ]
 
@@ -338,6 +338,14 @@ all_series = [
     description: 'A documentary TV series created and hosted by Shane Smith of Vice magazine. Produced by Bill Maher, it uses CNN journalist Fareed Zakaria as a consultant, and covers topics using an immersionist style of documentary filmmaking.',
     year: 2013,
     image: File.open('app/assets/images/series/vice/vice-cover.jpg'),
+    genres: [all_genres[6]]
+  }),
+# 36 4K Videos
+  Serie.create!({
+    title: '4K Videos',
+    description: 'A series of beautiful, 4K videos with soothing background music',
+    year: 2016,
+    image: File.open('app/assets/images/series/4K/4K-cover.jpg'),
     genres: [all_genres[6]]
   }),
 ]
@@ -737,6 +745,47 @@ all_episodes = [
     video_url: 'PHV98RrVJ1s',
     episode_number: 1
   }),
+# 4K Videos
+  Episode.create!({
+    title: 'Alchemy',
+    synopsis: 'Alchemy is a short film about transformation. In nature, everything is constantly changing: the earth, the sky, the stars, and all living things. Spring is followed by summer, fall and winter. Water turns into clouds, rain and ice. Over time, rivers are created, canyons carved, and mountains formed. All of these elements, mixed together, create the magic of nature''s alchemy.',
+    serie_id: all_series[36].id,
+    image: File.open('app/assets/images/series/4K/4K-episode-1.png'),
+    video_url: 'eYqIEBpbRhg',
+    episode_number: 1
+  }),
+  Episode.create!({
+    title: 'Ink Drops',
+    synopsis: 'Ink in action',
+    serie_id: all_series[36].id,
+    image: File.open('app/assets/images/series/4K/4K-episode-2.jpg'),
+    video_url: 'k_okcNVZqqI',
+    episode_number: 2
+  }),
+  Episode.create!({
+    title: 'Postcard from Innsbruck',
+    synopsis: 'Filmed in Innsbruck, Austria on the Canon 1DC in 4K',
+    serie_id: all_series[36].id,
+    image: File.open('app/assets/images/series/4K/4K-episode-3.jpg'),
+    video_url: 'EbvVpvXwlKU',
+    episode_number: 3
+  }),
+  Episode.create!({
+    title: 'Australia',
+    synopsis: 'Filming in Australia. Observe the natural beauty of an amazing place.',
+    serie_id: all_series[36].id,
+    image: File.open('app/assets/images/series/4K/4K-episode-4.jpg'),
+    video_url: 'tJGnHB3rtMU',
+    episode_number: 4
+  }),
+  Episode.create!({
+    title: 'Wildlife',
+    synopsis: 'Majestic animals in their natural habitats',
+    serie_id: all_series[36].id,
+    image: File.open('app/assets/images/series/4K/4K-episode-5.jpg'),
+    video_url: 'xDMP3i36naA',
+    episode_number: 5
+  }),
 ]
 
 reviews = [];
@@ -798,10 +847,24 @@ random_reviews = [
   "Life ain't easy sometimes, but we just gotta stay in line.",
   "Okay. This movie was absolutely amazing. The cinematography reminds me of traditional East Asian movies from the 1970s.",
   "What...",
+  "Amazing",
+  "WOW",
+  "So cool",
+  "That was incredible",
+  "4K is so cool",
+  "I love this tv show",
+  "Meh...",
+  "Sometimes when I sit and watch TV, I think of my ex-girlfriend",
+  "WOOHOO!",
+  "Cineflix... cineflix... CINEFLIX!!!!",
+  "Star wars or Legos?",
+  "I'm going to the gym now... anyone wanna come with?",
+  "I like to wash my hands after I watch movies... mostly because I eat a lot of popcorn",
+  "MMMMmmmmmmmm POPCORN"
 ];
 
 200.times do
-  serie_id = all_series[rand(34)].id
+  serie_id = all_series[rand(36)].id
   user_id = all_users[rand(20)].id
   rating = rand(1..5)
   body = random_reviews.sample

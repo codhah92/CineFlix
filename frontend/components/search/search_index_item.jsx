@@ -297,8 +297,8 @@ class SearchIndexItem extends React.Component {
             </h3>
               {detailIndexItems}
           </div>
-            <div className="review-header">Write a Review:
-              <span className="rating">{ starRatingComponent }</span>
+            <div className="review-header">Write a Review: <br/>
+              <span className="review-rating">{ starRatingComponent }</span>
             </div>
             <div className="review-form">
               <form className="form-container group" onSubmit={this.submitReview}>

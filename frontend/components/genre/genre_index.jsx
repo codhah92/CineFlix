@@ -3,14 +3,13 @@ import { Link, withRouter } from 'react-router';
 import GenreIndexItem from './genre_index_item';
 import { fetchGenres } from '../../actions/genre_actions';
 
+const PAGE = 3;
+
 class GenreIndex extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  // _redirectToGenre() {
-  //   this.props.router.push(`/browse/genres/${this.props.genres.id}`);
-  // }
   componentDidMount() {
     this.props.fetchGenres();
    }
