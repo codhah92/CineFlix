@@ -15,10 +15,10 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     if logged_in?
-        log_out!
-        render json: {}
+      log_out!
+      render json: {}
     else
-        render json: ['No available user to logout'], status: 404
+      render json: ['No available user to logout'], status: 404
     end
   end
 end
